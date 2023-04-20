@@ -1,0 +1,17 @@
+GET http://localhost:3000/users
+
+###
+
+GET http://localhost:3000/subscribers/6410913ab07c54a24b028807
+
+### 
+
+POST http://localhost:3000/subscribers
+Content-Type: application/json
+
+{
+    "name": "Jim Williams",
+    "subscribedToChannel": "Web Dev Simplified"
+}
+
+### 
