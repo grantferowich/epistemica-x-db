@@ -6,12 +6,13 @@ const bcrypt = require('bcryptjs')
 
 // get all users
 router.get('/', async (request, response) =>{
-    try {
-        const users = await User.find();
-        response.json(users)
-    } catch (err){
-        response.status(500).json({message: err.message})
-    }
+    console.log('here')
+    // try {
+    //     const users = await User.find();
+    //     response.json(users)
+    // } catch (err){
+    //     response.status(500).json({message: err.message})
+    // }
 })
 
 // getting one 
@@ -19,11 +20,23 @@ router.get('/:id', getUser, (request, response) => {
     response.send(response.user.name)
 })
 
+// add a user to the database
 router.post('/', async (request, response) => {
+    const {name, password } = request.body;
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
+    
     const user = new User({
-        name: request.body.name
+        name,
+        password: hashedPassword
+    });
 
-    })
+    try {
+        const savedUser = await user.save()
+        response.send(savedUser)
+    } catch (error) {
+        response.status(400).send(error)
+    }
 })
 
 router.patch()
