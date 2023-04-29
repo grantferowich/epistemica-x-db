@@ -12,7 +12,10 @@ const app = express();
 // db.once('open', () => console.log('Connected to Database'))
 
 // app.use(express.json())
+
+// ensure the page can render what is located in the views dir
 app.set("view engine", "ejs")
+
 app.get("/", (req, res) => {
     console.log('console here')
     res.render("index")
@@ -20,11 +23,12 @@ app.get("/", (req, res) => {
     // res.sendStatus(500)
     // res.download('server.js')
     // res.status(500).json({message: "Error"})
-    
 })
 
-// const usersRouter = require('./routes/users')
 
-// app.use('/users', usersRouter)
+const usersRouter = require('./routes/users')
+
+// mount the router, /users is the parent for everything in the userRouters
+app.use('/users', usersRouter)
 
 app.listen(3000, () => console.log('Server Started'))
