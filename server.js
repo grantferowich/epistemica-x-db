@@ -16,7 +16,8 @@ const app = express();
 // ensure the page can render what is located in the views dir
 app.set("view engine", "ejs")
 
-app.get("/", (req, res) => {
+// make sure the view is rendered
+app.get("/", logger, logger, logger, (req, res) => {
     console.log('console here')
     res.render("index")
     // res.send('hi to user')
@@ -30,5 +31,11 @@ const usersRouter = require('./routes/users')
 
 // mount the router, /users is the parent for everything in the userRouters
 app.use('/users', usersRouter)
+
+// only expect to use next with middleware
+function logger(request, response, next) {
+    console.log(request.originalUrl)
+    next()
+}
 
 app.listen(3000, () => console.log('Server Started'))

@@ -33,6 +33,7 @@ router.post('/', (request, response) => {
 router
     .route('/:id')
     .get((request, response) => {
+    console.log(request.user)
     response.send(`Get User With ID ${request.params.id}`)
 })
     .post((request, response) => {
@@ -43,6 +44,18 @@ router
 })
     .delete((request, response) => {
     response.send(`Delete User With ID ${request.params.id}`)
+})
+
+
+const users = [{name: "Joseph"}, {name: "Gary" }]
+
+// middleware
+// whenever the param is found the program will do some stuff
+router.param("id", (request, response, next, id) => {
+    // console.log(id)
+    request.user = users[id]
+    // call the next piece of middleware
+    next()
 })
 
 // dynamic parameters: starts with a colon
