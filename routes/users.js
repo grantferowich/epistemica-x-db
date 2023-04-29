@@ -29,11 +29,40 @@ router.post('/', (request, response) => {
     response.send('Create User')
 })
 
-// dynamic parameters: starts with a colon
-router.get('/:id', (request, response) =>{
-    request.params.id
+// route chaining
+router
+    .route('/:id')
+    .get((request, response) => {
     response.send(`Get User With ID ${request.params.id}`)
 })
+    .post((request, response) => {
+    response.send(`Create User ${request.params.id}`)
+})
+    .put((request, response) => {
+    response.send(`Update User With ID ${request.params.id}`)
+})
+    .delete((request, response) => {
+    response.send(`Delete User With ID ${request.params.id}`)
+})
+
+// dynamic parameters: starts with a colon
+// router.get('/:id', (request, response) =>{
+//     // request.params.id
+//     response.send(`Get User With ID ${request.params.id}`)
+// })
+
+// router.put('/:id', (request, response) =>{
+//     // request.params.id
+//     response.send(`Update User With ID ${request.params.id}`)
+// })
+
+// router.delete('/:id', (request, response) => {
+//     response.send(`Delete User With ID ${request.params.id}`)
+// })
+
+// get, put and delete all accept the same dynamic route (:id)
+// the acceptance of the same dynamic route inspires the pattern router.route
+
 
 // getting one 
 // router.get('/:id', getUser, (request, response) => {
