@@ -12,12 +12,15 @@ const app = express();
 // db.once('open', () => console.log('Connected to Database'))
 
 // app.use(express.json())
-
+app.set("view engine", "ejs")
 app.get("/", (req, res) => {
     console.log('console here')
+    res.render("index")
     // res.send('hi to user')
     // res.sendStatus(500)
-    res.status(500).json({message: "Error"})
+    // res.download('server.js')
+    // res.status(500).json({message: "Error"})
+    
 })
 
 // const usersRouter = require('./routes/users')
