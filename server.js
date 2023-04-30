@@ -1,15 +1,19 @@
+if (process.env.NODE_ENV !== 'production' ) {
+    require('dotenv').config()
+}
+
 require('dotenv').config();
 
 const express = require('express');
 const app = express();
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// mongoose.set('strictQuery', false);
-// mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true})
-// const db = mongoose.connection;
+mongoose.set('strictQuery', false);
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true})
+const db = mongoose.connection;
 
-// db.on('error', (error) => console.log(error))
-// db.once('open', () => console.log('Connected to Database'))
+db.on('error', (error) => console.log(error))
+db.once('open', () => console.log('Connected to Mongoose Database'))
 
 // app.use(express.json())
 
@@ -32,4 +36,4 @@ const usersRouter = require('./routes/users')
 // mount the router, /users is the parent for everything in the userRouters
 app.use('/users', usersRouter)
 
-app.listen(3000, () => console.log('Server Started'))
+app.listen(process.env.PORT || 3000, () => console.log('Server Started'))
