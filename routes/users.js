@@ -15,6 +15,8 @@ const bcrypt = require('bcryptjs')
 //     // }
 // })
 
+// every time a router function is touched the logger function is called
+router.use(logger)
 
 router.get('/', (request, response) => {
     response.send('User List')
@@ -115,5 +117,10 @@ async function getUser(request, response, next){
     response.user = user
 }
 
+// only expect to use next with middleware
+function logger(request, response, next) {
+    console.log(request.originalUrl)
+    next()
+}
 // app.listen(3000)
 module.exports = router
