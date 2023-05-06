@@ -1,7 +1,6 @@
 const express = require('express')
-// const user = require('../models/user')
 const router = express.Router()
-// const User = require('../models/User')
+// const User = require('../models/user.js')
 const bcrypt = require('bcryptjs')
 
 // get all users
@@ -85,6 +84,7 @@ router.param("id", (request, response, next, id) => {
 // })
 
 // add a user to the database
+
 // router.post('/', async (request, response) => {
 //     const {name, password } = request.body;
 //     const salt = await bcrypt.genSalt(10)
@@ -104,18 +104,17 @@ router.param("id", (request, response, next, id) => {
 // })
 
 // router.patch()
-
 // router.delete()
 
 // middleware
-async function getUser(request, response, next){
-    try {
-        user = await User.findById(request.param.id)
-    } catch (err){
-        return response.status(500).json({message: err.message})
-    }
-    response.user = user
-}
+// async function getUser(request, response, next){
+//     try {
+//         let user = await User.findById(request.param.id)
+//     } catch (err){
+//         return response.status(500).json({message: err.message})
+//     }
+//     response.user = user
+// }
 
 // only expect to use next with middleware
 function logger(request, response, next) {

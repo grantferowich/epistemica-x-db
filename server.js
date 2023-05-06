@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== 'production' ) {
 }
 
 require('dotenv').config();
+const User = require('./models/user.js')
 
 const express = require('express');
 const app = express();
@@ -11,6 +12,13 @@ const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true})
 const db = mongoose.connection;
+
+// async function run(){
+//     const user = new User({name: 'Grant'})
+//     await  user.save()
+// }
+
+// run()
 
 db.on('error', (error) => console.log(error))
 db.once('open', () => console.log('Connected to Mongoose Database'))
@@ -29,7 +37,6 @@ app.get("/", (req, res) => {
     // res.download('server.js')
     // res.status(500).json({message: "Error"})
 })
-
 
 const usersRouter = require('./routes/users')
 
