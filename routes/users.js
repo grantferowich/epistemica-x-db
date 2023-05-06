@@ -40,8 +40,14 @@ router.post('/post', async (request, response) => {
 })
 
 // getAll http
-router.get('/getAll', (request, response) => {
-    response.send('Get All API');
+router.get('/getAll', async (request, response) => {
+    // response.send('Get All API');
+    try {
+        const dataStr = await Model.find()
+        response.json(dataStr)
+    } catch (errorStr) {
+        response.status(500).json({ message: errorStr.message})
+    }
 })
 
 // getOne http
