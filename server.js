@@ -9,8 +9,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const mongoStr = process.env.DATABASE_URL
-// const userStr = process.env.DB_USER
-// const passwordStr = process.env.DB_Password
+
 mongoose.set('strictQuery', false);
 mongoose.connect(mongoStr, { useNewUrlParser: true})
 const db = mongoose.connection;
