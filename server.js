@@ -32,11 +32,12 @@ app.get("/", (req, res) => {
     // res.status(500).json({message: "Error"})
 })
 
+app.use(express.json())
 const usersRouter = require('./routes/users')
 
 // mount the router, /users is the parent for everything in the userRouters
 app.use('/api', usersRouter)
 
-app.use(express.json())
+
 
 app.listen(3000, () => console.log('Server Started'))

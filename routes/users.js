@@ -19,12 +19,24 @@ const bcrypt = require('bcryptjs')
 router.use(logger)
 
 // post http
-router.post('/post', (request, response) => {
+router.post('/post', async (request, response) => {
     // response.send('Post API');
     const data = new Model({
         name: request.body.name, 
         email: request.body.email
     })
+    
+    // wrap the data to be posted in a try-catch block 
+    // in the event name or email data type invalid
+    try {
+        const dataToSave = await data.save();
+        console.log(data)
+        response.status(200).json(dataToSave)
+    } catch (errorStr) {
+        // console.log(`Error: ${errorStr.message}`)
+        response.status(400).json({message: errorStr.message})
+    }
+
 })
 
 // getAll http
