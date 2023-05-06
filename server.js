@@ -3,7 +3,7 @@ if (process.env.NODE_ENV !== 'production' ) {
 }
 
 require('dotenv').config();
-const User = require('./models/user.js')
+const User = require('./model/user.js')
 
 const express = require('express');
 const app = express();
@@ -35,8 +35,8 @@ app.get("/", (req, res) => {
 const usersRouter = require('./routes/users')
 
 // mount the router, /users is the parent for everything in the userRouters
-app.use('/users', usersRouter)
+app.use('/api', usersRouter)
 
 app.use(express.json())
 
-app.listen(process.env.PORT || 3000, () => console.log('Server Started'))
+app.listen(3000, () => console.log('Server Started'))

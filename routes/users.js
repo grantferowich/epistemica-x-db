@@ -17,49 +17,67 @@ const bcrypt = require('bcryptjs')
 // every time a router function is touched the logger function is called
 router.use(logger)
 
-router.get('/', (request, response) => {
-    response.send('User List')
+// post http
+router.post('/post', (request, response) => {
+    response.send('Post API');
 })
 
-// /new is a static route
-router.get('/new', (request, response) => {
-    response.send('User New Form')
+// getAll http
+router.get('/getAll', (request, response) => {
+    response.send('Get All API');
 })
 
-router.post('/', (request, response) => {
-    response.send('Create User')
+// getOne http
+router.get('/getOne/:id', (request, response) => {
+    // response.send('Get by ID API');
+    response.send(request.params.id)
+
 })
+
+// update http
+router.patch('/update/:id', (request, response) => {
+    response.send('Update by ID API')
+})
+
+// Delete By ID http
+router.delete('/delete/:id', (request, response) => {
+    response.send('Delete by ID API')
+})
+
+// router.post('/', (request, response) => {
+//     response.send('Create User')
+// })
 
 // route chaining
-router
-    .route('/:id')
-    .get((request, response) => {
-    console.log(request.user)
-    response.send(`Get User With ID ${request.params.id}`)
-})
-    .post((request, response) => {
-    response.send(`Create User ${request.params.id}`)
-})
-    .put((request, response) => {
-    response.send(`Update User With ID ${request.params.id}`)
-})
-    .delete((request, response) => {
-    response.send(`Delete User With ID ${request.params.id}`)
-})
+// router
+//     .route('/:id')
+//     .get((request, response) => {
+//     console.log(request.user)
+//     response.send(`Get User With ID ${request.params.id}`)
+// })
+//     .post((request, response) => {
+//     response.send(`Create User ${request.params.id}`)
+// })
+//     .put((request, response) => {
+//     response.send(`Update User With ID ${request.params.id}`)
+// })
+//     .delete((request, response) => {
+//     response.send(`Delete User With ID ${request.params.id}`)
+// })
 
 
-const users = [{name: "Joseph"}, {name: "Gary" }]
-
+// const users = [{name: "Joseph"}, {name: "Gary" }]
 // middleware
 // whenever the param is found the program will do some stuff
-router.param("id", (request, response, next, id) => {
-    // console.log(id)
-    request.user = users[id]
-    // call the next piece of middleware
-    next()
-})
+// router.param("id", (request, response, next, id) => {
+//     // console.log(id)
+//     request.user = users[id]
+//     // call the next piece of middleware
+//     next()
+// })
 
 // dynamic parameters: starts with a colon
+
 // router.get('/:id', (request, response) =>{
 //     // request.params.id
 //     response.send(`Get User With ID ${request.params.id}`)
@@ -117,9 +135,12 @@ router.param("id", (request, response, next, id) => {
 // }
 
 // only expect to use next with middleware
+
 function logger(request, response, next) {
     console.log(request.originalUrl)
     next()
 }
+
 // app.listen(3000)
+
 module.exports = router
