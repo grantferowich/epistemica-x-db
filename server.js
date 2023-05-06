@@ -14,13 +14,6 @@ mongoose.set('strictQuery', false);
 mongoose.connect(mongoStr, { useNewUrlParser: true})
 const db = mongoose.connection;
 
-// async function run(){
-//     const user = new User({name: 'Grant'})
-//     await  user.save()
-// }
-
-// run()
-
 db.on('error', (error) => console.log(error))
 db.once('open', () => console.log('Connected to Mongoose Database'))
 
