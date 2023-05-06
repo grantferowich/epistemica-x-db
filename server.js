@@ -8,9 +8,11 @@ const User = require('./models/user.js')
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-
+const mongoStr = process.env.DATABASE_URL
+// const userStr = process.env.DB_USER
+// const passwordStr = process.env.DB_Password
 mongoose.set('strictQuery', false);
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true})
+mongoose.connect(mongoStr, { useNewUrlParser: true})
 const db = mongoose.connection;
 
 // async function run(){
@@ -42,5 +44,7 @@ const usersRouter = require('./routes/users')
 
 // mount the router, /users is the parent for everything in the userRouters
 app.use('/users', usersRouter)
+
+app.use(express.json())
 
 app.listen(process.env.PORT || 3000, () => console.log('Server Started'))
