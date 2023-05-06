@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 // const User = require('../models/user.js')
+const Model = require('../models/model')
 const bcrypt = require('bcryptjs')
 
 // get all users
@@ -19,7 +20,11 @@ router.use(logger)
 
 // post http
 router.post('/post', (request, response) => {
-    response.send('Post API');
+    // response.send('Post API');
+    const data = new Model({
+        name: request.body.name, 
+        email: request.body.email
+    })
 })
 
 // getAll http

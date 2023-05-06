@@ -3,12 +3,12 @@ if (process.env.NODE_ENV !== 'production' ) {
 }
 
 require('dotenv').config();
-const User = require('./model/user.js')
+const User = require('./models/model.js')
 
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const mongoStr = process.env.DATABASE_URL
+const mongoStr = process.env.DATABASE_URL;
 
 mongoose.set('strictQuery', false);
 mongoose.connect(mongoStr, { useNewUrlParser: true})
