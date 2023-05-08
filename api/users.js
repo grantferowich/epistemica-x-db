@@ -4,6 +4,9 @@ const router = express.Router()
 const Model = require('../models/model')
 const bcrypt = require('bcryptjs')
 
+
+/// it works!!! 
+// https://epistemica-x-db.vercel.app/api/getAl
 // get all users
 // router.get('/', async (request, response) =>{
 //     console.log('here')
