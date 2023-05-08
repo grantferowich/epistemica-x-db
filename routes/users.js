@@ -79,8 +79,16 @@ router.patch('/update/:id', async (request, response) => {
 })
 
 // Delete By ID http
-router.delete('/delete/:id', (request, response) => {
-    response.send('Delete by ID API')
+router.delete('/delete/:id', async (request, response) => {
+    // response.send('Delete by ID API')
+    try {
+        const idStr = request.params.id
+        const resultHash = await Model.findByIdAndDelete(idStr)
+        response.send(resultHash);
+    } catch (errorStr) {
+        response.sendStatus(500).json({message: errorStr})
+    }
+    
 })
 
 // router.post('/', (request, response) => {
