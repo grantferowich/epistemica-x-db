@@ -32,6 +32,7 @@ app.get("/", (req, res) => {
     // res.status(500).json({message: "Error"})
 })
 
+
 app.use(express.json())
 const usersRouter = require('./api/users.js')
 
