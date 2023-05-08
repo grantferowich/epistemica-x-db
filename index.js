@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 })
 
 app.use(express.json())
-const usersRouter = require('./routes/users.js')
+const usersRouter = require('./api/users.js')
 
 // mount the router, /users is the parent for everything in the userRouters
 app.use('/api', usersRouter)
