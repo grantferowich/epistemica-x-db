@@ -61,6 +61,7 @@ router.get('/getOne/:id', (request, response) => {
 })
 
 // update http
+// successfully tested the patch method May 8, 2023
 router.patch('/update/:id', async (request, response) => {
 
     // response.send('Update by ID API')
@@ -68,7 +69,7 @@ router.patch('/update/:id', async (request, response) => {
         const idStr = request.params.id;
         const updatedDataHash = request.body;
         const optionsHash = { new: true};
-        const resultHash = await Model.findByIdAndUpdate(idStr, updatedDatHash, optionsHash)
+        const resultHash = await Model.findByIdAndUpdate(idStr, updatedDataHash, optionsHash);
         
         response.send(resultHash)
     } catch (errorStr) {
