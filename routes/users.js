@@ -79,12 +79,13 @@ router.patch('/update/:id', async (request, response) => {
 })
 
 // Delete By ID http
+// successfully tested 
 router.delete('/delete/:id', async (request, response) => {
     // response.send('Delete by ID API')
     try {
         const idStr = request.params.id
         const resultHash = await Model.findByIdAndDelete(idStr)
-        response.send(resultHash);
+        response.send(`The following info was deleted: ${resultHash}`);
     } catch (errorStr) {
         response.sendStatus(500).json({message: errorStr})
     }
