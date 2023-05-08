@@ -19,6 +19,7 @@ const bcrypt = require('bcryptjs')
 router.use(logger)
 
 // post http
+// successfully tested May 8, 2023
 router.post('/post', async (request, response) => {
     // response.send('Post API');
     const data = new Model({
@@ -40,17 +41,19 @@ router.post('/post', async (request, response) => {
 })
 
 // getAll http
+// successfully tested /getAll on May 8, 2023
 router.get('/getAll', async (request, response) => {
     // response.send('Get All API');
     try {
-        const dataStr = await Model.find()
-        response.json(dataStr)
+        const dataArr = await Model.find()
+        response.json(dataArr)
     } catch (errorStr) {
         response.status(500).json({ message: errorStr.message})
     }
 })
 
 // getOne http
+// successfully tested /getOne/:id on May 08, 2023
 router.get('/getOne/:id', (request, response) => {
     // response.send('Get by ID API');
     response.send(request.params.id)
@@ -58,8 +61,20 @@ router.get('/getOne/:id', (request, response) => {
 })
 
 // update http
-router.patch('/update/:id', (request, response) => {
-    response.send('Update by ID API')
+router.patch('/update/:id', async (request, response) => {
+
+    // response.send('Update by ID API')
+    try {
+        const idStr = request.params.id;
+        const updatedDataHash = request.body;
+        const optionsHash = { new: true};
+        const resultHash = await Model.findByIdAndUpdate(idStr, updatedDatHash, optionsHash)
+        
+        response.send(resultHash)
+    } catch (errorStr) {
+        // console.log(`ErrorStr ${errorStr}`)
+        response.sendStatus(400).json({ message: errorStr.message})
+    }
 })
 
 // Delete By ID http

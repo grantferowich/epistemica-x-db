@@ -9,11 +9,6 @@ const dataSchema = new mongoose.Schema({
         required: true, 
         type: String
     }
-    // createdAt: {
-    //     type: Date,
-    //     default: () => new Date()
-    // },
-    // updatedAt: Date,
 })
 
 module.exports = mongoose.model('Data', dataSchema)
