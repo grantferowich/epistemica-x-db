@@ -4,7 +4,6 @@ if (process.env.NODE_ENV !== 'production' ) {
 
 require('dotenv').config();
 const User = require('./models/model.js')
-
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -33,11 +32,11 @@ app.get("/", (req, res) => {
 })
 
 app.use(express.json())
-const usersRouter = require('./routes/users')
+const usersRouter = require('./routes/users.js')
 
 // mount the router, /users is the parent for everything in the userRouters
 app.use('/api', usersRouter)
 
+app.listen(3000, () => console.log('Server Started'));
 
-
-app.listen(3000, () => console.log('Server Started'))
+module.exports = app;
