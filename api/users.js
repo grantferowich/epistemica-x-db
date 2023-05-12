@@ -4,7 +4,8 @@ const router = express.Router()
 const Model = require('../models/model')
 const bcrypt = require('bcryptjs')
 const saltRoundsInt = 10;
-/// it works!!! 
+
+// it works!!! 
 // https://epistemica-x-db.vercel.app/api/getAll
 // get all users
 // router.get('/', async (request, response) =>{
@@ -25,7 +26,6 @@ router.use(logger)
 router.post('/post', async (request, response) => {
     // response.send('Post API');
     const hashedPasswordStr = await bcrypt.hash(request.body.password, saltRoundsInt);
-    
     const data = new Model({
         name: request.body.name, 
         email: request.body.email,
@@ -49,11 +49,12 @@ router.get('/getAll', async (request, response) => {
     // response.send('Get All API');
     try {
         const dataArr = await Model.find()
-        response.json(dataArr)
+        return response.json(dataArr)
     } catch (errorStr) {
         response.status(500).json({ message: errorStr.message})
     }
 })
+
 
 // getOne http
 // successfully tested /getOne/:id on May 08, 2023
@@ -84,8 +85,8 @@ router.patch('/update/:id', async (request, response) => {
 router.delete('/delete/:id', async (request, response) => {
     // response.send('Delete by ID API')
     try {
-        const idStr = request.params.id
-        const resultHash = await Model.findByIdAndDelete(idStr)
+        const idStr = request.params.id;
+        const resultHash = await Model.findByIdAndDelete(idStr);
         response.send(`The following info was deleted: ${resultHash}`);
     } catch (errorStr) {
         response.sendStatus(500).json({message: errorStr})

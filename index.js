@@ -1,9 +1,9 @@
 if (process.env.NODE_ENV !== 'production' ) {
-    require('dotenv').config()
+    require('dotenv').config();
 }
 
 require('dotenv').config();
-const User = require('./models/model.js')
+const Model = require('./models/model.js');
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -42,7 +42,8 @@ app.use((requestHM, responseHM, next) =>{
     responseHM.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
     responseHM.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Type, X-Requested-With');
     next();
-})
+});
+
 const usersRouter = require('./api/users.js')
 
 // mount the router, /users is the parent for everything in the userRouters
