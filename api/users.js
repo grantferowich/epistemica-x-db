@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 
 
 /// it works!!! 
-// https://epistemica-x-db.vercel.app/api/getAl
+// https://epistemica-x-db.vercel.app/api/getAll
 // get all users
 // router.get('/', async (request, response) =>{
 //     console.log('here')
@@ -23,11 +23,13 @@ router.use(logger)
 
 // post http
 // successfully tested May 8, 2023
+// 
 router.post('/post', async (request, response) => {
     // response.send('Post API');
     const data = new Model({
         name: request.body.name, 
-        email: request.body.email
+        email: request.body.email,
+        password: request.body.password
     })
     
     // wrap the data to be posted in a try-catch block 
