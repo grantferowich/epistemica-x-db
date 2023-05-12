@@ -21,7 +21,7 @@ db.once('open', () => console.log('Connected to Mongoose Database'));
 // app.use(express.json());
 app.use(express.json());
 
-const whitelistArr = ['http://localhost:3000', 'http://localhost:3001/signup', 'http://localhost:3001/signup', 'http://localhost:3001'];
+const whitelistArr = ['http://localhost:3000', 'http://localhost:3001/signup', 'http://localhost:3001/signup', 'http://localhost:3001', 'https://epistemica-x.vercel.app/'];
 
 const corsOptionsHM = {
     origin: function (originStr, callback) {
@@ -38,7 +38,7 @@ const corsOptionsHM = {
 
 app.use(cors(corsOptionsHM))
 app.use((requestHM, responseHM, next) =>{
-    responseHM.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    responseHM.header('Access-Control-Allow-Origin', 'http://localhost:3000', 'http://localhost:3001', 'https://epistemica-x.vercel.app/');
     responseHM.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
     responseHM.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Type, X-Requested-With');
     next();
