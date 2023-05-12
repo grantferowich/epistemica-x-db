@@ -38,7 +38,7 @@ const corsOptionsHM = {
 
 app.use(cors(corsOptionsHM))
 app.use((requestHM, responseHM, next) =>{
-    responseHM.header('Access-Control-Allow-Origin', '*');
+    responseHM.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     responseHM.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
     responseHM.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Type, X-Requested-With');
     next();
