@@ -15,12 +15,14 @@ mongoose.connect(mongoStr, { useNewUrlParser: true})
 const db = mongoose.connection;
 
 
-db.on('error', (error) => console.log(error))
-db.once('open', () => console.log('Connected to Mongoose Database'))
+db.on('error', (error) => console.log(error));
+db.once('open', () => console.log('Connected to Mongoose Database'));
 
-// app.use(express.json())
-app.use(express.json())
-const whitelistArr = ['http://localhost:3000', 'http://localhost:3001/signup', 'http://localhost:3001/signup', 'http://localhost:3001']
+// app.use(express.json());
+app.use(express.json());
+
+const whitelistArr = ['http://localhost:3000', 'http://localhost:3001/signup', 'http://localhost:3001/signup', 'http://localhost:3001'];
+
 const corsOptionsHM = {
     origin: function (originStr, callback) {
         if (!originStr || whitelistArr.indexOf(originStr) !== -1){
@@ -50,16 +52,12 @@ app.set("view engine", "ejs")
 
 // make sure the view is rendered
 app.get("/", (req, res) => {
-    console.log('console here')
-    res.render("index")
+    res.render("index");
     // res.send('hi to user')
     // res.sendStatus(500)
     // res.download('server.js')
     // res.status(500).json({message: "Error"})
 })
-
-
-
 
 app.listen(3000, () => console.log('Server Started'));
 
