@@ -3,8 +3,7 @@ const router = express.Router()
 // const User = require('../models/user.js')
 const Model = require('../models/model')
 const bcrypt = require('bcryptjs')
-
-
+const saltRoundsInt = 10;
 /// it works!!! 
 // https://epistemica-x-db.vercel.app/api/getAll
 // get all users
@@ -23,15 +22,16 @@ router.use(logger)
 
 // post http
 // successfully tested May 8, 2023
-// 
 router.post('/post', async (request, response) => {
     // response.send('Post API');
+    const hashedPasswordStr = await bcrypt.hash(request.body.password, saltRoundsInt);
+    
     const data = new Model({
         name: request.body.name, 
         email: request.body.email,
-        password: request.body.password
+        password: hashedPasswordStr
     })
-    
+
     // wrap the data to be posted in a try-catch block 
     // in the event name or email data type invalid
     try {
@@ -39,10 +39,8 @@ router.post('/post', async (request, response) => {
         console.log(data)
         response.status(200).json(dataToSave)
     } catch (errorStr) {
-        // console.log(`Error: ${errorStr.message}`)
         response.status(400).json({message: errorStr.message})
     }
-
 })
 
 // getAll http
@@ -68,7 +66,6 @@ router.get('/getOne/:id', (request, response) => {
 // update http
 // successfully tested the patch method May 8, 2023
 router.patch('/update/:id', async (request, response) => {
-
     // response.send('Update by ID API')
     try {
         const idStr = request.params.id;
@@ -78,7 +75,6 @@ router.patch('/update/:id', async (request, response) => {
         
         response.send(resultHash)
     } catch (errorStr) {
-        // console.log(`ErrorStr ${errorStr}`)
         response.sendStatus(400).json({ message: errorStr.message})
     }
 })
