@@ -44,23 +44,32 @@ router.post('/post', async (request, response) => {
     }
 })
 
-router.post('/login', async (request, response) => {
-    const {emailStr, passwordStr} = request.body;
 
+// engineered on May 18, 2023
+//g.ferowich@gmail.com
+// legend-alpha
+router.post('/login', logger, async (request, response) => {
+    const {emailStr, passwordStr} = request.body;
+    console.log(`emailStr ${emailStr}, passwordStr ${passwordStr}`)
     try {
         const userObj = await Model.findOne({emailStr});
         if (!userObj){
             return response.status(401).json({message: "Invalid credentials: No user was found with this email address."})
         }
         const isPasswordValidToF = await bcrypt.compare(passwordStr, userObj.password);
+        console.log('isPasswordToF',isPasswordValidToF)
+        console.log('passwordStr', passwordStr)
+        console.log('userObj.password', userObj.password)
         // invalid password
         if (!isPasswordValidToF){
             return response.status(401).json({message: "Invalid password."})
         }
+
         // valid password
         return response.status(200).json({message: "Login successful."})
     } catch (errorStr) {
-        return response.status(500).json({message: "Server error."})
+        console.log(errorStr)
+        return response.status(500).json({message: errorStr})
     }
 
 })
