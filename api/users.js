@@ -19,6 +19,7 @@ const saltRoundsInt = 10;
 // })
 
 // every time a router function is touched the logger function is called
+
 router.use(logger)
 
 // post http
@@ -43,6 +44,26 @@ router.post('/post', async (request, response) => {
     }
 })
 
+router.post('/login', async (request, response) => {
+    const {emailStr, passwordStr} = request.body;
+
+    try {
+        const userObj = await Model.findOne({emailStr});
+        if (!userObj){
+            return response.status(401).json({message: "Invalid credentials: No user was found with this email address."})
+        }
+        const isPasswordValidToF = await bcrypt.compare(passwordStr, userObj.password);
+        // invalid password
+        if (!isPasswordValidToF){
+            return response.status(401).json({message: "Invalid password."})
+        }
+        // valid password
+        return response.status(200).json({message: "Login successful."})
+    } catch (errorStr) {
+        return response.status(500).json({message: "Server error."})
+    }
+
+})
 // getAll http
 // successfully tested /getAll on May 8, 2023
 router.get('/getAll', async (request, response) => {
@@ -60,14 +81,13 @@ router.get('/getAll', async (request, response) => {
 // successfully tested /getOne/:id on May 08, 2023
 router.get('/getOne/:id', (request, response) => {
     // response.send('Get by ID API');
-    response.send(request.params.id)
-
+    response.send(request.params.id);
 })
 
 // update http
 // successfully tested the patch method May 8, 2023
 router.patch('/update/:id', async (request, response) => {
-    // response.send('Update by ID API')
+    // response.send('Update by ID API');
     try {
         const idStr = request.params.id;
         const updatedDataHash = request.body;
@@ -185,12 +205,11 @@ router.delete('/delete/:id', async (request, response) => {
 // }
 
 // only expect to use next with middleware
-
+// middleware which sits between the server and the route handlers
 function logger(request, response, next) {
     console.log(request.originalUrl)
     next()
 }
 
 // app.listen(3000)
-
 module.exports = router
