@@ -15,3 +15,10 @@ Content-Type: application/json
 }
 
 ### 
+POST https://epistemica-x-db.vercel.app/api/login
+Content-Type: application/json
+
+{
+    "email":"g.ferowich@gmail.com",
+    "password":"legend-alpha"
+}

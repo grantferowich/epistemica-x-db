@@ -49,10 +49,12 @@ router.post('/post', async (request, response) => {
 //g.ferowich@gmail.com
 // legend-alpha
 router.post('/login', logger, async (request, response) => {
-    const {emailStr, passwordStr} = request.body;
-    console.log(`emailStr ${emailStr}, passwordStr ${passwordStr}`)
+
     try {
+        const emailStr = request.body.email
+        const passwordStr = request.body.password
         const userObj = await Model.findOne({emailStr});
+
         if (!userObj){
             return response.status(401).json({message: "Invalid credentials: No user was found with this email address."})
         }
@@ -64,7 +66,6 @@ router.post('/login', logger, async (request, response) => {
         if (!isPasswordValidToF){
             return response.status(401).json({message: "Invalid password."})
         }
-
         // valid password
         return response.status(200).json({message: "Login successful."})
     } catch (errorStr) {
