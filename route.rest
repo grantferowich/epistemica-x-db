@@ -20,5 +20,5 @@ Content-Type: application/json
 
 {
     "email":"g.ferowich@gmail.com",
-    "password":"legend-alpha"
+    "password":"legend"
 }

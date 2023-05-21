@@ -3,15 +3,21 @@ if (process.env.NODE_ENV !== 'production' ) {
 }
 
 require('dotenv').config();
+
+// constants
 const Model = require('./models/model.js');
 const express = require('express');
 const app = express();
-const cors = require('cors');
 const mongoose = require('mongoose');
 const mongoStr = process.env.DATABASE_URL;
 
+// middleware
+const cors = require('cors');
+
 mongoose.set('strictQuery', false);
 mongoose.connect(mongoStr, { useNewUrlParser: true})
+
+// initialize db object
 const db = mongoose.connection;
 
 
@@ -35,7 +41,6 @@ const corsOptionsHM = {
     optionsSuccessStatus: 200
 }
 
-
 app.use(cors(corsOptionsHM))
 app.use((requestHM, responseHM, next) =>{
     responseHM.header('Access-Control-Allow-Origin', 'http://localhost:3000', 'http://localhost:3001', 'https://epistemica-x.vercel.app/');
@@ -45,7 +50,6 @@ app.use((requestHM, responseHM, next) =>{
 });
 
 const usersRouter = require('./api/users.js')
-
 // mount the router, /users is the parent for everything in the userRouters
 app.use('/api', usersRouter)
 // ensure the page can render what is located in the views dir

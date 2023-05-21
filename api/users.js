@@ -1,8 +1,8 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 // const User = require('../models/user.js')
-const Model = require('../models/model')
-const bcrypt = require('bcryptjs')
+const Model = require('../models/model');
+const bcrypt = require('bcryptjs');
 const saltRoundsInt = 10;
 
 // it works!!! 
@@ -46,34 +46,37 @@ router.post('/post', async (request, response) => {
 
 
 // engineered on May 18, 2023
-//g.ferowich@gmail.com
+// untested as of May 19, 2023 
+// g.ferowich@gmail.com
 // legend-alpha
 router.post('/login', logger, async (request, response) => {
 
     try {
         const emailStr = request.body.email
         const passwordStr = request.body.password
-        const userObj = await Model.findOne({emailStr});
+        console.log('emailStr', emailStr)
+        const userObj = await Model.findOne({email: emailStr});
 
         if (!userObj){
-            return response.status(401).json({message: "Invalid credentials: No user was found with this email address."})
+            return response.status(401).json({message: emailStr})
         }
+
         const isPasswordValidToF = await bcrypt.compare(passwordStr, userObj.password);
-        console.log('isPasswordToF',isPasswordValidToF)
-        console.log('passwordStr', passwordStr)
-        console.log('userObj.password', userObj.password)
+        console.log('isPasswordToF',isPasswordValidToF);
+        console.log('passwordStr', passwordStr);
+        console.log('userObj.password', userObj.password);
         // invalid password
         if (!isPasswordValidToF){
-            return response.status(401).json({message: "Invalid password."})
+            return response.status(401).json({message: "Invalid password."});
         }
         // valid password
-        return response.status(200).json({message: "Login successful."})
+        return response.status(200).json({message: "Login successful."});
     } catch (errorStr) {
-        console.log(errorStr)
-        return response.status(500).json({message: errorStr})
+        console.log(errorStr);
+        return response.status(500).json({message: errorStr});
     }
-
 })
+
 // getAll http
 // successfully tested /getAll on May 8, 2023
 router.get('/getAll', async (request, response) => {
@@ -121,7 +124,6 @@ router.delete('/delete/:id', async (request, response) => {
     } catch (errorStr) {
         response.sendStatus(500).json({message: errorStr})
     }
-    
 })
 
 // router.post('/', (request, response) => {
