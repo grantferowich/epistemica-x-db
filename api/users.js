@@ -54,17 +54,14 @@ router.post('/login', logger, async (request, response) => {
     try {
         const emailStr = request.body.email
         const passwordStr = request.body.password
-        console.log('emailStr', emailStr)
         const userObj = await Model.findOne({email: emailStr});
 
+    
         if (!userObj){
             return response.status(401).json({message: emailStr})
         }
 
         const isPasswordValidToF = await bcrypt.compare(passwordStr, userObj.password);
-        console.log('isPasswordToF',isPasswordValidToF);
-        console.log('passwordStr', passwordStr);
-        console.log('userObj.password', userObj.password);
         // invalid password
         if (!isPasswordValidToF){
             return response.status(401).json({message: "Invalid password."});
