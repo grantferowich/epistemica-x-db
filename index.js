@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production' ) {
 require('dotenv').config();
 
 // constants
-const Model = require('./models/model.js');
+const User = require('./models/user.js');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');

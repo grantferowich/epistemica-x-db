@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-// const User = require('../models/user.js')
-const Model = require('../models/model');
+// const User = require('../models/user.js');
+const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const saltRoundsInt = 10;
 
@@ -27,7 +27,7 @@ router.use(logger)
 router.post('/post', async (request, response) => {
     // response.send('Post API');
     const hashedPasswordStr = await bcrypt.hash(request.body.password, saltRoundsInt);
-    const data = new Model({
+    const data = new User({
         name: request.body.name, 
         email: request.body.email,
         password: hashedPasswordStr
@@ -46,17 +46,24 @@ router.post('/post', async (request, response) => {
 
 
 // engineered on May 18, 2023
-// untested as of May 19, 2023 
+// successfuilly tested as of May 21, 2023
 // g.ferowich@gmail.com
 // legend-alpha
+
+// Note on May 23, 2023: Add some type of password validation mechanism.
+// If a user does not enter their credentials properly
+// display a message saying incorrect username or incorrect password
 router.post('/login', logger, async (request, response) => {
 
     try {
+        // destructure the request object
         const emailStr = request.body.email
         const passwordStr = request.body.password
-        const userObj = await Model.findOne({email: emailStr});
+        // search the NoSQL data base 
+        const userObj = await User.findOne({email: emailStr});
 
     
+
         if (!userObj){
             return response.status(401).json({message: emailStr})
         }
@@ -79,7 +86,7 @@ router.post('/login', logger, async (request, response) => {
 router.get('/getAll', async (request, response) => {
     // response.send('Get All API');
     try {
-        const dataArr = await Model.find()
+        const dataArr = await User.find()
         return response.json(dataArr)
     } catch (errorStr) {
         response.status(500).json({ message: errorStr.message})
@@ -102,7 +109,7 @@ router.patch('/update/:id', async (request, response) => {
         const idStr = request.params.id;
         const updatedDataHash = request.body;
         const optionsHash = { new: true};
-        const resultHash = await Model.findByIdAndUpdate(idStr, updatedDataHash, optionsHash);
+        const resultHash = await User.findByIdAndUpdate(idStr, updatedDataHash, optionsHash);
         
         response.send(resultHash)
     } catch (errorStr) {
@@ -116,7 +123,7 @@ router.delete('/delete/:id', async (request, response) => {
     // response.send('Delete by ID API')
     try {
         const idStr = request.params.id;
-        const resultHash = await Model.findByIdAndDelete(idStr);
+        const resultHash = await User.findByIdAndDelete(idStr);
         response.send(`The following info was deleted: ${resultHash}`);
     } catch (errorStr) {
         response.sendStatus(500).json({message: errorStr})
