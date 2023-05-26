@@ -3,3 +3,4 @@ Some dependencies
 1. npm install --save-dev dotenv nodemon
 2. npm install bcrypt
    - bcrypt will salt the passwords before they are saved
+3. npm install body-parser 
