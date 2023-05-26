@@ -39,8 +39,8 @@ router.post('/post', async (request, response) => {
         const dataToSave = await data.save();
         console.log(data)
         response.status(200).json(dataToSave)
-    } catch (errorStr) {
-        response.status(400).json({message: errorStr.message})
+    } catch (errorObj) {
+        response.status(400).json({message: errorObj.message})
     }
 })
 

@@ -8,7 +8,7 @@ router.use(logger);
 // post a basket
 // engineered on May 26, 2023
 router.post('/postBasket', async (request, response) => {
-
+    console.log(request.body)
     const basketData = new Basket({
         basketNameStr: null,
         user_IDInt: null,
