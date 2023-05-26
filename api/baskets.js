@@ -6,6 +6,7 @@ const Basket = require('../models/basket');
 router.use(logger);
 
 // post a basket
+// engineered on May 26, 2023
 router.post('/postBasket', async (request, response) => {
 
     const basketData = new Basket({
@@ -50,6 +51,14 @@ router.post('/postBasket', async (request, response) => {
         }
 
     })
+
+    try { 
+        const basketDataToSave = basketData.save();
+        console.log(basketData)
+        response.status(200).json(basketDataToSave)
+    } catch (errorObj) {
+        response.status(400).json({message: errorObj.message})
+    }
 })
 //  router.use((request, response) => {
     
