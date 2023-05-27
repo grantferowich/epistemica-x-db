@@ -74,7 +74,7 @@ router.post('/login', logger, async (request, response) => {
             return response.status(401).json({message: "Invalid password."});
         }
         // valid password
-        return response.status(200).json({message: "Login successful."});
+        return response.status(200).json({userObj});
     } catch (errorStr) {
         console.log(errorStr);
         return response.status(500).json({message: errorStr});
