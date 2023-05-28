@@ -24,7 +24,7 @@ router.use(logger)
 
 // post http
 // successfully tested May 8, 2023
-router.post('user/post', async (request, response) => {
+router.post('/user/post', async (request, response) => {
     // response.send('Post API');
     const hashedPasswordStr = await bcrypt.hash(request.body.password, saltRoundsInt);
     const data = new User({
@@ -53,7 +53,7 @@ router.post('user/post', async (request, response) => {
 // Note on May 23, 2023: Add some type of password validation mechanism.
 // If a user does not enter their credentials properly
 // display a message saying incorrect username or incorrect password
-router.post('user/login', logger, async (request, response) => {
+router.post('/user/login', logger, async (request, response) => {
 
     try {
         // destructure the request object
@@ -83,7 +83,7 @@ router.post('user/login', logger, async (request, response) => {
 
 // getAll http
 // successfully tested /getAll on May 8, 2023
-router.get('user/getAll', async (request, response) => {
+router.get('/user/getAll', async (request, response) => {
     // response.send('Get All API');
     try {
         const dataArr = await User.find()
@@ -96,14 +96,14 @@ router.get('user/getAll', async (request, response) => {
 
 // getOne http
 // successfully tested /getOne/:id on May 08, 2023
-router.get('user/getOne/:id', (request, response) => {
+router.get('/user/getOne/:id', (request, response) => {
     // response.send('Get by ID API');
     response.send(request.params.id);
 })
 
 // update http
 // successfully tested the patch method May 8, 2023
-router.patch('user/update/:id', async (request, response) => {
+router.patch('/user/update/:id', async (request, response) => {
     // response.send('Update by ID API');
     try {
         const idStr = request.params.id;
@@ -119,7 +119,7 @@ router.patch('user/update/:id', async (request, response) => {
 
 // Delete By ID http
 // successfully tested 
-router.delete('user/delete/:id', async (request, response) => {
+router.delete('/user/delete/:id', async (request, response) => {
     // response.send('Delete by ID API')
     try {
         const idStr = request.params.id;
