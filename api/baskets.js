@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-// to build
 const Basket = require('../models/basket');
-// const bodyParser = require('body-parser')
+
 router.use(logger);
 
 // post a basket
@@ -59,13 +58,7 @@ router.post('/post', async (request, response) => {
     } catch (errorObj) {
         response.status(400).json({message: errorObj.message})
     }
-})
-//  router.use((request, response) => {
-    
-//     bodyParser.urlencoded({extended: false})
-//     console.log(bodyParser)
-//     next();
-//  })
+})  
 
 // getAll baskets
 router.get('/getAll', async (request, response) => {

@@ -57,15 +57,12 @@ router.post('/login', logger, async (request, response) => {
 
     try {
         // destructure the request object
-        const emailStr = request.body.email
-        const passwordStr = request.body.password
+        const emailStr = request.body.email;
+        const passwordStr = request.body.password;
         // search the NoSQL data base 
         const userObj = await User.findOne({email: emailStr});
-
-    
-
         if (!userObj){
-            return response.status(401).json({message: emailStr})
+            return response.status(401).json({message: emailStr});
         }
 
         const isPasswordValidToF = await bcrypt.compare(passwordStr, userObj.password);

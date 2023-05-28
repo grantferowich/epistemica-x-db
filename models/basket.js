@@ -54,9 +54,7 @@
     //      asset5APIKeyStr: currency5APIKey,
     //     }
     //  }
-
 const mongoose = require('mongoose');
-
 const basketSchema = new Mongoose.Schema({
     basketNameStr: {
         required: true,
