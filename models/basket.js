@@ -62,9 +62,9 @@ const basketSchema = new Mongoose.Schema({
         required: true,
         type: String
     }, 
-    user_IdInt: {
+    user_IdStr: {
         required: false,
-        type: Number
+        type: String
     }, 
     indexDateStr: {
         required: true,
