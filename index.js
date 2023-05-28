@@ -53,8 +53,8 @@ const usersRouter = require('./api/users.js');
 const basketsRouter = require('./api/baskets.js');
 
 // mount the router, /users is the parent for everything in the userRouters
-app.use('/api', usersRouter);
-app.use('/api', basketsRouter);
+app.use('/api/user', usersRouter);
+app.use('/api/basket', basketsRouter);
 // ensure the page can render what is located in the views dir
 app.set("view engine", "ejs")
 

@@ -7,7 +7,7 @@ router.use(logger);
 
 // post a basket
 // engineered on May 26, 2023
-router.post('/basket/post', async (request, response) => {
+router.post('/post', async (request, response) => {
     console.log(request.body)
     const basketData = new Basket({
         basketNameStr: null,
@@ -68,7 +68,7 @@ router.post('/basket/post', async (request, response) => {
 //  })
 
 // getAll baskets
-router.get('/basket/getAll', async (request, response) => {
+router.get('/getAll', async (request, response) => {
     try {
         const basketDataArr = await Basket.find();
         return response.json(basketDataArr)
@@ -78,13 +78,13 @@ router.get('/basket/getAll', async (request, response) => {
 })
 
 // get a basket
-router.get('/basket/getOne/:id', (request, response) => {
+router.get('/getOne/:id', (request, response) => {
     // response.send('Get by ID API');
     response.send(request.params.id);
 })
 
 // Delete a basket
-router.delete('/basket/delete/:id', async (request, response) => {
+router.delete('/delete/:id', async (request, response) => {
     // response.send('Delete by ID API')
     try {
         const idStr = request.params.id;
