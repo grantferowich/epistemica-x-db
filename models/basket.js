@@ -55,7 +55,7 @@
     //     }
     //  }
 const mongoose = require('mongoose');
-const basketSchema = new Mongoose.Schema({
+const basketSchema = new mongoose.Schema({
     basketNameStr: {
         required: true,
         type: String

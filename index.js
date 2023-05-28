@@ -56,7 +56,7 @@ const basketsRouter = require('./api/baskets.js');
 app.use('/api/user', usersRouter);
 app.use('/api/basket', basketsRouter);
 // ensure the page can render what is located in the views dir
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
 
 // make sure the view is rendered
 app.get("/", (req, res) => {
