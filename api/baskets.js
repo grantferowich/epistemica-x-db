@@ -8,17 +8,19 @@ router.use(logger);
 // engineered on May 26, 2023
 router.post('/post', async (request, response) => {
     console.log(request.body)
+
+
     const basketData = new Basket({
-        basketNameStr: null,
-        user_IDStr: null,
-        indexDateStr: null,
-        initialBasketValueInt: 0,
+        basketNameStr: request.body.basketNameStr,
+        user_IDStr: request.body.user_IDStr,
+        indexDateStr: request.body.indexDateStr,
+        initialBasketValueInt: request.body.initialBasketValueInt,
         asset1HM: {
-            asset1NameStr: null,
-            asset1IndexPriceInt: 0,
-            asset1QuantityInt: 0,
-            asset1WeightInt: 0,
-            asset1APIKeyStr: null
+            asset1NameStr: request.body.asset1HM.asset1NameStr,
+            asset1IndexPriceInt: request.body.asset1HM.asset1IndexPriceInt,
+            asset1QuantityInt: request.body.asset1HM.asset1QuantityInt,
+            asset1WeightInt: request.body.asset1HM.asset1WeightInt,
+            asset1APIKeyStr: request.body.asset1HM.asset1APIKeyStr
         },
         asset2HM: {
             asset2NameStr: null,

@@ -56,9 +56,11 @@ router.post('/post', async (request, response) => {
 router.post('/login', logger, async (request, response) => {
 
     try {
+        
         // destructure the request object
         const emailStr = request.body.email;
         const passwordStr = request.body.password;
+        
         // search the NoSQL data base 
         const userObj = await User.findOne({email: emailStr});
         if (!userObj){
@@ -66,10 +68,12 @@ router.post('/login', logger, async (request, response) => {
         }
 
         const isPasswordValidToF = await bcrypt.compare(passwordStr, userObj.password);
+        
         // invalid password
         if (!isPasswordValidToF){
             return response.status(401).json({message: "Invalid password."});
         }
+        
         // valid password
         return response.status(200).json({userObj});
     } catch (errorStr) {
