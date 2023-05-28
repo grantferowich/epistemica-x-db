@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ### 
-POST https://epistemica-x-db.vercel.app/api/login
+POST https://epistemica-x-db.vercel.app/api/user/login
 Content-Type: application/json
 
 {
