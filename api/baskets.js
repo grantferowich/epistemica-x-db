@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// Basket is importing the schema specified in models/basket
 const Basket = require('../models/basket');
 
 router.use(logger);
