@@ -24,34 +24,33 @@ router.post('/post', async (request, response) => {
             asset1APIKeyStr: request.body.asset1HM.asset1APIKeyStr
         },
         asset2HM: {
-            asset2NameStr: null,
-            asset2IndexPriceInt: 0,
-            asset2QuantityInt: 0,
-            asset2WeightInt: 0,
-            asset2APIKeyStr: null
+            asset2NameStr: request.body.asset2HM.asset2NameStr,
+            asset2IndexPriceInt: request.body.asset2HM.asset2IndexPriceInt,
+            asset2QuantityInt: request.body.asset2HM.asset2QuantityInt,
+            asset2WeightInt: request.body.asset2HM.asset2WeightInt,
+            asset2APIKeyStr: request.body.asset2HM.asset2APIKeyStr
         },
         asset3HM: {
-            asset3NameStr: null,
-            asset3IndexPriceInt: 0,
-            asset3QuantityInt: 0,
-            asset3WeightInt: 0,
-            asset3APIKeyStr: null
+            asset3NameStr: request.body.asset3HM.asset3NameStr,
+            asset3IndexPriceInt: request.body.asset3HM.asset3IndexPriceInt,
+            asset3QuantityInt: request.body.asset3HM.asset3QuantityInt,
+            asset3WeightInt: request.body.asset3HM.asset3WeightInt,
+            asset3APIKeyStr: request.body.asset3HM.asset3APIKeyStr
         },
         asset4HM: {
-            asset4NameStr: null,
-            asset4IndexPriceInt: 0,
-            asset4QuantityInt: 0,
-            asset4WeightInt: 0,
-            asset4APIKeyStr: null
+            asset4NameStr: request.body.asset4HM.asset4NameStr,
+            asset4IndexPriceInt: request.body.asset4HM.asset4IndexPriceInt,
+            asset4QuantityInt: request.body.asset4HM.asset4QuantityInt,
+            asset4WeightInt: request.body.asset4HM.asset4WeightInt,
+            asset4APIKeyStr: request.body.asset4HM.asset4APIKeyStr
         },
         asset5HM: {
-            asset5NameStr: null,
-            asset5IndexPriceInt: 0,
-            asset5QuantityInt: 0,
-            asset5WeightInt: 0,
-            asset5APIKeyStr: null
+            asset5NameStr: request.body.asset5HM.asset5NameStr,
+            asset5IndexPriceInt: request.body.asset5HM.asset5IndexPriceInt,
+            asset5QuantityInt: request.body.asset5HM.asset5QuantityInt,
+            asset5WeightInt: request.body.asset5HM.asset5WeightInt,
+            asset5APIKeyStr: request.body.asset5HM.asset5APIKeyStr
         }
-
     })
 
     try { 
