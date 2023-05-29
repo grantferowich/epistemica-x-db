@@ -2,14 +2,13 @@ const express = require('express');
 const router = express.Router();
 // Basket is importing the schema specified in models/basket
 const Basket = require('../models/basket');
+const cors = require('cors')
 
 router.use(logger)
 
 // post a basket
 // engineered on May 26, 2023
-router.post('/post', async (request, response) => {
-
-    
+router.post('/post', cors(), async (request, response) => {
 
     const basketData = new Basket({
         basketNameStr: request.body.basketNameStr,
