@@ -30,40 +30,40 @@ Content-Type: application/json
     "basketNameStr": "2023 Bitcoin",
     "user_IDStr": "646678e5024aad67cf201bfb",
     "indexDateStr": "01-01-2023",
-    "initialBasketValueInt": "1000",
+    "initialBasketValueInt": 1000,
     "asset1HM": {
         "asset1NameStr": "Bitcoin",
-        "asset1IndexPriceInt": "10000", 
-        "asset1QuantityInt": "0.1", 
-        "asset1WeightInt": "100",
+        "asset1IndexPriceInt": 10000, 
+        "asset1QuantityInt": 0.1, 
+        "asset1WeightInt": 100,
         "asset1APIKeyStr": "bitcoin"
     },
     "asset2HM": {
         "asset2NameStr": "",
-        "asset2IndexPriceInt": "", 
-        "asset2QuantityInt": "",
-        "asset2WeightInt": "",
+        "asset2IndexPriceInt": 0, 
+        "asset2QuantityInt": 0,
+        "asset2WeightInt": 0,
         "asset2APIKeyStr": ""
     },
     "asset3HM": {
         "asset3NameStr": "",
-        "asset3IndexPriceInt": "",
-        "asset3QuantityInt": "",
-        "asset3WeightInt": "",
+        "asset3IndexPriceInt": 0,
+        "asset3QuantityInt": 0,
+        "asset3WeightInt": 0,
         "asset3APIKeyStr": ""
     },
     "asset4HM": {
         "asset4NameStr": "",
-        "asset4IndexPriceInt": "",
-        "asset4QuantityInt": "",
-        "asset4WeightInt": "",
+        "asset4IndexPriceInt": 0,
+        "asset4QuantityInt": 0,
+        "asset4WeightInt": 0,
         "asset4APIKeyStr": ""
     },
     "asset5HM": {
         "asset5NameStr": "",
-        "asset5IndexPriceInt": "", 
-        "asset5QuantityInt": "",
-        "asset5WeightInt": "",
+        "asset5IndexPriceInt": 0, 
+        "asset5QuantityInt": 0,
+        "asset5WeightInt": 0,
         "asset5APIKeyStr": ""
     }
   }
