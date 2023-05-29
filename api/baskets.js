@@ -3,13 +3,13 @@ const router = express.Router();
 // Basket is importing the schema specified in models/basket
 const Basket = require('../models/basket');
 
-router.use(logger);
+router.use(logger)
 
 // post a basket
 // engineered on May 26, 2023
 router.post('/post', async (request, response) => {
-    console.log(request.body)
 
+    
 
     const basketData = new Basket({
         basketNameStr: request.body.basketNameStr,
@@ -55,11 +55,15 @@ router.post('/post', async (request, response) => {
 
     try { 
         const basketDataToSave = basketData.save();
+        let basketNameStr = request.body.basketNameStr
+    console.log('Basket Name Str', basketNameStr);
+    console.log('Request body: ', request.body)
         console.log(basketData)
         response.status(200).json(basketDataToSave)
     } catch (errorObj) {
         response.status(400).json({message: errorObj.message})
     }
+    next()
 })  
 
 // getAll baskets

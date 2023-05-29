@@ -23,7 +23,7 @@ Content-Type: application/json
     "password":"legend"
 }
 ###
-POST https://epistemica-x-db.vercel.app/api/basket/post
+POST https://epistemica-x-db-git-main-clariti23.vercel.app/api/basket/post
 Content-Type: application/json
 
 {

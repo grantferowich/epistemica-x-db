@@ -43,108 +43,108 @@ const basketSchema = new mongoose.Schema({
     asset2HM: {
         asset2NameStr: {
             type: String,
-            required: true,
+            required: false,
             default: ""
         },
         asset2IndexPriceInt: {
             type: Number,
             default: 0,
-            required: true
+            required: false
         },
         asset2QuantityInt: {
             type: Number,
             default: 0,
-            required: true,
+            required: false,
         },
         asset2WeightInt: {
             type: Number,
-            required: true,
+            required: false,
             default: 0
         },
         asset2APIKeyStr: {
             type: String,
-            required: true,
+            required: false,
             default: ""
         }
     },
     asset3HM: {
         asset3NameStr: {
             type: String,
-            required: true,
+            required: false,
             default: ""
         },
         asset3IndexPriceInt: {
             type: Number,
             default: 0,
-            required: true
+            required: false
         },
         asset3QuantityInt: {
             type: Number,
             default: 0,
-            required: true,
+            required: false,
         },
         asset3WeightInt: {
             type: Number,
-            required: true,
+            required: false,
             default: 0
         },
         asset3APIKeyStr: {
             type: String,
-            required: true,
+            required: false,
             default: ""
         }
     },
     asset4HM: {
         asset4NameStr: {
             type: String,
-            required: true,
+            required: false,
             default: ""
         },
         asset4IndexPriceInt: {
             type: Number,
             default: 0,
-            required: true
+            required: false
         },
         asset4QuantityInt: {
             type: Number,
             default: 0,
-            required: true,
+            required: false,
         },
         asset4WeightInt: {
             type: Number,
-            required: true,
+            required: false,
             default: 0
         },
         asset4APIKeyStr: {
             type: String,
-            required: true,
+            required: false,
             default: ""
         }
     },
     asset5HM: {
         asset5NameStr: {
             type: String,
-            required: true,
+            required: false,
             default: ""
         },
         asset5IndexPriceInt: {
             type: Number,
             default: 0,
-            required: true
+            required: false
         },
         asset5QuantityInt: {
             type: Number,
             default: 0,
-            required: true,
+            required: false,
         },
         asset5WeightInt: {
             type: Number,
-            required: true,
+            required: false,
             default: 0
         },
         asset5APIKeyStr: {
             type: String,
-            required: true,
+            required: false,
             default: ""
         }
     }
