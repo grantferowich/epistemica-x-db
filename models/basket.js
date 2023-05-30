@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment')
+const AutoIncrement = require('mongoose-sequence')(mongoose)
+
+
+
 
 const basketSchema = new mongoose.Schema({
-    basket_IDInt: {
-        type: Number,
-        unique: true
-    },
     basketNameStr: {
         required: true,
         type: String
@@ -180,13 +179,8 @@ const basketSchema = new mongoose.Schema({
     }
 })
 
-basketSchema.plugin(autoIncrement.plugin, {
-    model: 'basketSchema',
-    field: 'basket_IDInt',
-    startAt: 1
-})
+basketSchema.plugin(AutoIncrement, {
+   inc_field: 'id'
+});
 
 module.exports = mongoose.model('Basket', basketSchema)
-
-
-

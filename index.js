@@ -10,8 +10,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const mongoStr = process.env.DATABASE_URL;
-const autoIncrement = require('mongoose-auto-increment')
-// autoIncrement.initialize(mongoose.connection);
 
 // middleware
 const cors = require('cors');
@@ -21,8 +19,6 @@ mongoose.connect(mongoStr, { useNewUrlParser: true})
 
 // initialize db object
 const db = mongoose.connection;
-autoIncrement.initialize(db)
-
 
 db.on('error', (error) => console.log(error));
 db.once('open', () => console.log('Connected to Mongoose Database'));
