@@ -10,6 +10,8 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const mongoStr = process.env.DATABASE_URL;
+const autoIncrement = require('mongoose-auto-increment')
+autoIncrement.initialize(mongoose.connection);
 
 // middleware
 const cors = require('cors');

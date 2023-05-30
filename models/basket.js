@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const AutoIncrement = require('mongoose-auto-increment')
+const autoIncrement = require('mongoose-auto-increment')
 
 const basketSchema = new mongoose.Schema({
     basket_IDInt: {
@@ -180,8 +180,8 @@ const basketSchema = new mongoose.Schema({
     }
 })
 
-basketSchema.plugin(AutoIncrement.plugin, {
-    model: 'Basket',
+basketSchema.plugin(autoIncrement.plugin, {
+    model: 'basketSchema',
     field: 'basket_IDInt',
     startAt: 1
 })
