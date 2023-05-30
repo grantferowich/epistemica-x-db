@@ -180,9 +180,7 @@ const basketSchema = new mongoose.Schema({
     }
 })
  
-
-const Basket = mongoose.model('Basket', basketSchema)
-module.exports = Basket;
+module.exports = mongoose.model('Basket', basketSchema)
 
 AutoIncrement.initialize(mongoose.connection)
 basketSchema.plugin(AutoIncrement.plugin, {
