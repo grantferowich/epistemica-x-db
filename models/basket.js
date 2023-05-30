@@ -4,7 +4,7 @@ const AutoIncrement = require('mongoose-auto-increment')
 const basketSchema = new mongoose.Schema({
     basket_IDInt: {
         type: Number,
-        unique: true,
+        unique: true
     },
     basketNameStr: {
         required: true,
