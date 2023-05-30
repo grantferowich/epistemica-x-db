@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose)
 
-
-
-
 const basketSchema = new mongoose.Schema({
     basketNameStr: {
         required: true,
