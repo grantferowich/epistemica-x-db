@@ -96,6 +96,16 @@ router.delete('/delete/:id', async (request, response) => {
     }
 })
 
+router.delete('/deleteAll', async (request, response) => {
+    try {
+      await Basket.deleteMany(); // Delete all documents in the "Basket" collection
+      response.json({ message: 'All baskets deleted successfully.' });
+    } catch (error) {
+      response.status(500).json({ message: error.message });
+    }
+  });
+
+
 
 function logger(request, response, next) {
     console.log(request.originalUrl)
