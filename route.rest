@@ -27,7 +27,6 @@ POST https://epistemica-x-db-git-main-clariti23.vercel.app/api/basket/post
 Content-Type: application/json
 
 {
-    "basket_IDInt": 1, 
     "basketNameStr": "2023 Bitcoin",
     "user_IDStr": "646678e5024aad67cf201bfb",
     "indexDateStr": "01-01-2023",
