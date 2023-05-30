@@ -58,7 +58,13 @@ router.post('/post', cors(), async (request, response) => {
     })
 
     try { 
-        const basketDataToSave = await basketData.save();
+        const basketDataToSave = await basketData.save(( err, savedBasket) => {
+            if (err){
+                console.log(err.message)
+            } else {
+                console.log('saved basket number', savedBasket.basket_IDInt)
+            }
+        });
         let basketNameStr = request.body.basketNameStr
         console.log('Request body: ', request.body)
         console.log(basketData)
@@ -103,7 +109,7 @@ router.delete('/deleteAll', async (request, response) => {
     } catch (error) {
       response.status(500).json({ message: error.message });
     }
-  });
+});
 
 
 
