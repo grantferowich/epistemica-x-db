@@ -5,7 +5,7 @@ const basketSchema = new mongoose.Schema({
         required: true,
         type: String
     }, 
-    user_IdStr: {
+    user_IDStr: {
         required: false,
         type: String
     }, 
