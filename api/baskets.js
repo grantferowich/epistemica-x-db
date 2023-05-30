@@ -20,43 +20,47 @@ router.post('/post', cors(), async (request, response) => {
             asset1IndexPriceInt: request.body.asset1HM.asset1IndexPriceInt,
             asset1QuantityInt: request.body.asset1HM.asset1QuantityInt,
             asset1WeightInt: request.body.asset1HM.asset1WeightInt,
-            asset1APIKeyStr: request.body.asset1HM.asset1APIKeyStr
+            asset1APIKeyStr: request.body.asset1HM.asset1APIKeyStr,
+            asset1LoSStr: request.body.asset1HM.asset1LoSStr
         },
         asset2HM: {
             asset2NameStr: request.body.asset2HM.asset2NameStr,
             asset2IndexPriceInt: request.body.asset2HM.asset2IndexPriceInt,
             asset2QuantityInt: request.body.asset2HM.asset2QuantityInt,
             asset2WeightInt: request.body.asset2HM.asset2WeightInt,
-            asset2APIKeyStr: request.body.asset2HM.asset2APIKeyStr
+            asset2APIKeyStr: request.body.asset2HM.asset2APIKeyStr,
+            asset2LoSStr: request.body.asset2HM.asset2LoSStr
         },
         asset3HM: {
             asset3NameStr: request.body.asset3HM.asset3NameStr,
             asset3IndexPriceInt: request.body.asset3HM.asset3IndexPriceInt,
             asset3QuantityInt: request.body.asset3HM.asset3QuantityInt,
             asset3WeightInt: request.body.asset3HM.asset3WeightInt,
-            asset3APIKeyStr: request.body.asset3HM.asset3APIKeyStr
+            asset3APIKeyStr: request.body.asset3HM.asset3APIKeyStr,
+            asset3LoSStr: request.body.asset3HM.asset3LoSStr
         },
         asset4HM: {
             asset4NameStr: request.body.asset4HM.asset4NameStr,
             asset4IndexPriceInt: request.body.asset4HM.asset4IndexPriceInt,
             asset4QuantityInt: request.body.asset4HM.asset4QuantityInt,
             asset4WeightInt: request.body.asset4HM.asset4WeightInt,
-            asset4APIKeyStr: request.body.asset4HM.asset4APIKeyStr
+            asset4APIKeyStr: request.body.asset4HM.asset4APIKeyStr,
+            asset4LoSStr: request.body.asset4HM.asset4LoSStr
         },
         asset5HM: {
             asset5NameStr: request.body.asset5HM.asset5NameStr,
             asset5IndexPriceInt: request.body.asset5HM.asset5IndexPriceInt,
             asset5QuantityInt: request.body.asset5HM.asset5QuantityInt,
             asset5WeightInt: request.body.asset5HM.asset5WeightInt,
-            asset5APIKeyStr: request.body.asset5HM.asset5APIKeyStr
+            asset5APIKeyStr: request.body.asset5HM.asset5APIKeyStr,
+            asset5LoSStr: request.body.asset5HM.asset5LoSStr
         }
     })
 
     try { 
         const basketDataToSave = await basketData.save();
         let basketNameStr = request.body.basketNameStr
-    console.log('Basket Name Str', basketNameStr);
-    console.log('Request body: ', request.body)
+        console.log('Request body: ', request.body)
         console.log(basketData)
         response.status(200).json(basketDataToSave)
     } catch (errorObj) {

@@ -38,6 +38,11 @@ const basketSchema = new mongoose.Schema({
         asset1APIKeyStr: {
             type: String,
             required: true,
+        },
+        asset1LoSStr: {
+            type: String,
+            required: true,
+            default: "long"
         }
     },
     asset2HM: {
@@ -65,6 +70,11 @@ const basketSchema = new mongoose.Schema({
             type: String,
             required: false,
             default: ""
+        },
+        asset2LoSStr: {
+            type: String,
+            required: false,
+            default: "long"
         }
     },
     asset3HM: {
@@ -92,6 +102,11 @@ const basketSchema = new mongoose.Schema({
             type: String,
             required: false,
             default: ""
+        },
+        asset3LoSStr: {
+            type: String,
+            required: false,
+            default: "long"
         }
     },
     asset4HM: {
@@ -119,6 +134,11 @@ const basketSchema = new mongoose.Schema({
             type: String,
             required: false,
             default: ""
+        },
+        asset4LoSStr: {
+            type: String,
+            required: false,
+            default: "long"
         }
     },
     asset5HM: {
@@ -146,6 +166,11 @@ const basketSchema = new mongoose.Schema({
             type: String,
             required: false,
             default: ""
+        },
+        asset5LoSStr: {
+            type: String,
+            required: false,
+            default: "long"
         }
     }
 })

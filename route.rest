@@ -36,34 +36,39 @@ Content-Type: application/json
         "asset1IndexPriceInt": 10000, 
         "asset1QuantityInt": 0.1, 
         "asset1WeightInt": 100,
-        "asset1APIKeyStr": "bitcoin"
+        "asset1APIKeyStr": "bitcoin",
+        "asset1LoSStr": "long"
     },
     "asset2HM": {
         "asset2NameStr": "",
         "asset2IndexPriceInt": 0, 
         "asset2QuantityInt": 0,
         "asset2WeightInt": 0,
-        "asset2APIKeyStr": ""
+        "asset2APIKeyStr": "",
+        "asset2LoSStr": "long"
     },
     "asset3HM": {
         "asset3NameStr": "",
         "asset3IndexPriceInt": 0,
         "asset3QuantityInt": 0,
         "asset3WeightInt": 0,
-        "asset3APIKeyStr": ""
+        "asset3APIKeyStr": "",
+        "asset3LoSStr": "long"
     },
     "asset4HM": {
         "asset4NameStr": "",
         "asset4IndexPriceInt": 0,
         "asset4QuantityInt": 0,
         "asset4WeightInt": 0,
-        "asset4APIKeyStr": ""
+        "asset4APIKeyStr": "",
+        "asset4LoSStr": "long"
     },
     "asset5HM": {
         "asset5NameStr": "",
         "asset5IndexPriceInt": 0, 
         "asset5QuantityInt": 0,
         "asset5WeightInt": 0,
-        "asset5APIKeyStr": ""
+        "asset5APIKeyStr": "",
+        "asset5LoSStr": "long"
     }
   }
