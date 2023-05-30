@@ -184,6 +184,7 @@ const basketSchema = new mongoose.Schema({
 const Basket = mongoose.model('Basket', basketSchema)
 module.exports = Basket;
 
+AutoIncrement.initialize(mongoose.connection)
 basketSchema.plugin(AutoIncrement.plugin, {
     model: 'Basket',
     field: 'basket_IDInt',
