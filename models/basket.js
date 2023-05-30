@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-auto-increment')
-let connection = mongoose.createConnection(process.env.DATABASE_URL)
-AutoIncrement.initialize(connection)
+
 const basketSchema = new mongoose.Schema({
     basket_IDInt: {
         type: Number,
@@ -181,11 +180,13 @@ const basketSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Basket', basketSchema)
-
-
 basketSchema.plugin(AutoIncrement.plugin, {
     model: 'Basket',
     field: 'basket_IDInt',
     startAt: 1
 })
+
+module.exports = mongoose.model('Basket', basketSchema)
+
+
+
