@@ -53,11 +53,9 @@ app.use((requestHM, responseHM, next) =>{
     // option 1
     const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', 'https://epistemica-x.vercel.app'];
     const requestOrigin = requestHM.headers.origin;
-    
     if (allowedOrigins.includes(requestOrigin)) {
         responseHM.header('Access-Control-Allow-Origin', requestOrigin);
     }
-
     // option 2
     // responseHM.header('Access-Control-Allow-Origin', '*');
     // responseHM.header('Access-Control-Allow-Origin', 'http://localhost:3000 http://localhost:3001 https://epistemica-x.vercel.app/');
