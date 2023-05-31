@@ -50,7 +50,17 @@ const corsOptionsHM = {
 
 app.use(cors(corsOptionsHM))
 app.use((requestHM, responseHM, next) =>{
-    responseHM.header('Access-Control-Allow-Origin', 'http://localhost:3000 http://localhost:3001 https://epistemica-x.vercel.app/');
+    // option 1
+    const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', 'https://epistemica-x.vercel.app'];
+    const requestOrigin = requestHM.headers.origin;
+    
+    if (allowedOrigins.includes(requestOrigin)) {
+        responseHM.header('Access-Control-Allow-Origin', requestOrigin);
+    }
+
+    // option 2
+    // responseHM.header('Access-Control-Allow-Origin', '*');
+    // responseHM.header('Access-Control-Allow-Origin', 'http://localhost:3000 http://localhost:3001 https://epistemica-x.vercel.app/');
     responseHM.header('Access-Control-Allow-Credentials', 'true' )
     responseHM.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
     responseHM.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Type, X-Requested-With');
