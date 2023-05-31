@@ -1,3 +1,5 @@
+
+
 {
     "version": 2,
     "builds": [
@@ -10,7 +12,7 @@
         {
             "src":"/(.*)",
             "headers": {
-                "Access-Control-Allow-Origin": "http://localhost:3000, http://localhost:3001, https://epistemica-x.vercel.app"
+                "Access-Control-Allow-Origin": "http://localhost:3001"
               },
             "dest": "/"
         }
