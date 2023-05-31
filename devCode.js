@@ -15,6 +15,7 @@
 
 // This is the code which i was using for development. 
 // I later learned there can only be one source, not three.
+// Noted at 8:36 am on Wednesday, May 31. 
 
 
 // {
