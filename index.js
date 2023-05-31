@@ -19,7 +19,7 @@ const options = {
     reconnectTries: Number.MAX_VALUE,
     poolSize: 10,
     bufferMaxEntries: 0
-}
+};
 
 mongoose.set('strictQuery', false);
 mongoose.connect(mongoStr, { useNewUrlParser: true}, {useMongoClient: true})

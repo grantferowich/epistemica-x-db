@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const basketSchema = new mongoose.Schema({
-    basket_IDInt: {
-        required: true, 
-        type: Number
-    },
     basketNameStr: {
         required: true,
         type: String
@@ -179,17 +175,5 @@ const basketSchema = new mongoose.Schema({
     }
 })
 
-basketSchema.pre('save', function(next) {
-    var doc = this;
-    counterSchema.findByIdAndUpdate({_id: 'baId'},
-    {$inc: {seq: 1}},
-    {"upsert":true, "new":true}, 
-    function(error, counter) {
-        if (error) {return next(error)}
-    doc.basket_IDInt = counter.seq;
-    next();
-    }
-    )}
-)
 
 module.exports = mongoose.model('Basket', basketSchema)
