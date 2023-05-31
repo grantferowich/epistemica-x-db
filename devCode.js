@@ -10,3 +10,28 @@
 //       response.status(500).json({ message: error.message });
 //     }
 //   });
+
+
+
+// This is the code which i was using for development. 
+// I later learned there can only be one source, not three.
+
+
+// {
+//     "version": 2,
+//     "builds": [
+//         {
+//             "src":"./index.js",
+//             "use": "@vercel/node"
+//         }
+//     ],
+//     "routes": [
+//         {
+//             "src":"/(.*)",
+//             "headers": {
+//                 "Access-Control-Allow-Origin": "http://localhost:3000, http://localhost:3001, https://epistemica-x.vercel.app"
+//               },
+//             "dest": "/"
+//         }
+//     ]
+// }
