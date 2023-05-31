@@ -36,7 +36,7 @@ app.use(express.json());
 const devURLStr = 'http://localhost:3001'
 const corsOptionsHM = {
     origin: devURLStr,
-    credentials: true,
+    withCredentials: true,
     optionsSuccessStatus: 200
 }
 
