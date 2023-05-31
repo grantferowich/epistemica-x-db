@@ -13,9 +13,16 @@ const mongoStr = process.env.DATABASE_URL;
 
 // middleware
 const cors = require('cors');
+const options = {
+    useMongoClient: true,
+    autoIndex: false,
+    reconnectTries: Number.MAX_VALUE,
+    poolSize: 10,
+    bufferMaxEntries: 0
+}
 
 mongoose.set('strictQuery', false);
-mongoose.connect(mongoStr, { useNewUrlParser: true})
+mongoose.connect(mongoStr, { useNewUrlParser: true}, {useMongoClient: true})
 
 // initialize db object
 const db = mongoose.connection;

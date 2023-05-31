@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const basketSchema = new mongoose.Schema({
     basket_IDInt: {
         required: true, 
@@ -182,7 +181,7 @@ const basketSchema = new mongoose.Schema({
 
 basketSchema.pre('save', function(next) {
     var doc = this;
-    CounterSchema.findByIdAndUpdate({_id: 'baId'},
+    counterSchema.findByIdAndUpdate({_id: 'baId'},
     {$inc: {seq: 1}},
     {"upsert":true, "new":true}, 
     function(error, counter) {
