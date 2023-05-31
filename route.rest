@@ -22,6 +22,7 @@ Content-Type: application/json
     "email":"g.ferowich@gmail.com",
     "password":"legend"
 }
+
 ###
 POST https://epistemica-x-db-git-main-clariti23.vercel.app/api/basket/post
 Content-Type: application/json
