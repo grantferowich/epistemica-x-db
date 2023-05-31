@@ -12,7 +12,7 @@
         {
             "src":"/(.*)",
             "headers": {
-                "Access-Control-Allow-Origin": "http://localhost:3001"
+                "Access-Control-Allow-Origin": "*"
               },
             "dest": "/"
         }
