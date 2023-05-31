@@ -60,7 +60,7 @@ app.use((requestHM, responseHM, next) =>{
     // option 2
     responseHM.header('Access-Control-Allow-Origin', '*');
     // responseHM.header('Access-Control-Allow-Origin', 'http://localhost:3000 http://localhost:3001 https://epistemica-x.vercel.app/');
-    responseHM.header('Access-Control-Allow-Credentials', 'true' )
+    // responseHM.header('Access-Control-Allow-Credentials', 'true' )
     responseHM.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
     responseHM.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Type, X-Requested-With');
     next();
