@@ -51,16 +51,7 @@ app.use(express.json());
 
 // app.use(cors(corsOptionsHM))
 app.use((requestHM, responseHM, next) =>{
-    // option 1
-    // const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', 'https://epistemica-x.vercel.app'];
-    // const requestOrigin = requestHM.headers.origin;
-    // if (allowedOrigins.includes(requestOrigin)) {
-    //     responseHM.header('Access-Control-Allow-Origin', requestOrigin);
-    // }
-    // option 2
     responseHM.header('Access-Control-Allow-Origin', '*');
-    // responseHM.header('Access-Control-Allow-Origin', 'http://localhost:3000 http://localhost:3001 https://epistemica-x.vercel.app/');
-    // responseHM.header('Access-Control-Allow-Credentials', 'true' )
     responseHM.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
     responseHM.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Type, X-Requested-With');
     next();
@@ -78,10 +69,6 @@ app.set("view engine", "ejs");
 // make sure the view is rendered
 app.get("/", (req, res) => {
     res.render("index");
-    // res.send('hi to user')
-    // res.sendStatus(500)
-    // res.download('server.js')
-    // res.status(500).json({message: "Error"})
 })
 
 app.listen(3000, () => console.log('Server Started'));
