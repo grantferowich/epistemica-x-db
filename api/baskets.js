@@ -15,6 +15,8 @@ router.post('/post', cors(), async (request, response) => {
         user_IDStr: request.body.user_IDStr,
         indexDateStr: request.body.indexDateStr,
         initialBasketValueInt: request.body.initialBasketValueInt,
+        presentBasketValueInt: request.body.presentBasketValueInt,
+        percentReturnInt: request.body.percentReturnInt,
         asset1HM: {
             asset1NameStr: request.body.asset1HM.asset1NameStr,
             asset1IndexPriceInt: request.body.asset1HM.asset1IndexPriceInt,
