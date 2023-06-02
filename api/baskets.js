@@ -61,7 +61,7 @@ router.post('/post', cors(), async (request, response) => {
 
     try { 
         const basketDataToSave = await basketData.save();
-        // let basketNameStr = request.body.basketNameStr
+        let basketNameStr = request.body.basketNameStr
         console.log('Request body: ', request.body)
         console.log(basketData)
         response.status(200).json(basketDataToSave)
