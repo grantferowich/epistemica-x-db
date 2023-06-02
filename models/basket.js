@@ -24,7 +24,7 @@ const basketSchema = new mongoose.Schema({
     percentReturnInt: {
         required: true,
         type: Number
-    }
+    },
     asset1HM: {
         asset1NameStr: {
             type: String,

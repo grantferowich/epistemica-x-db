@@ -32,6 +32,8 @@ Content-Type: application/json
     "user_IDStr": "646678e5024aad67cf201bfb",
     "indexDateStr": "01-01-2023",
     "initialBasketValueInt": 1000,
+    "presentBasketValueInt": 2000,
+    "percentReturnInt": 100,
     "asset1HM": {
         "asset1NameStr": "Bitcoin",
         "asset1IndexPriceInt": 10000, 
