@@ -67,6 +67,7 @@ router.post('/post', cors(), async (request, response) => {
         response.status(200).json(basketDataToSave)
     } catch (errorObj) {
         response.status(400).json(console.log('Error!', errorObj.message))
+        console.log(request.body)
     }
 })  
 
