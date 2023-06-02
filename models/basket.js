@@ -17,6 +17,14 @@ const basketSchema = new mongoose.Schema({
         required: true,
         type: Number
     },
+    presentBasketValueInt: {
+        required: true,
+        type: Number
+    },
+    percentReturnInt: {
+        required: true,
+        type: Number
+    }
     asset1HM: {
         asset1NameStr: {
             type: String,

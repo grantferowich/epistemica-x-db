@@ -34,22 +34,7 @@ db.once('open', () => console.log('Connected to Mongoose Database'));
 app.use(express.json());
 
 
-// const whitelistArr = ['http://localhost:3000', 'http://localhost:3001/signup', 'http://localhost:3001/signup', 'http://localhost:3001', 'http://localhost:3001/login', 'https://epistemica-x.vercel.app/'];
 
-// const corsOptionsHM = {
-//     origin: function (originStr, callback) {
-//         console.log('origin string', originStr)
-//         if (!originStr || whitelistArr.indexOf(originStr) !== -1){
-//             callback(null, true)
-//         } else {
-//             callback(new Error('Not allowed by CORS'))
-//         }
-//     },
-//     credentials: true,
-//     optionsSuccessStatus: 200
-// }
-
-// app.use(cors(corsOptionsHM))
 app.use((requestHM, responseHM, next) =>{
     responseHM.header('Access-Control-Allow-Origin', '*');
     responseHM.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
