@@ -74,6 +74,8 @@ Content-Type: application/json
         "asset5APIKeyStr": "",
         "asset5LoSStr": "long"
     }
-  }
+}
 
- 
+### 
+POST https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/post
+Content-Type: application/json 
