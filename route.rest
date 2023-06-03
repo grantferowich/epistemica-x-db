@@ -76,6 +76,8 @@ Content-Type: application/json
     }
 }
 
+// the coins post request works as of Saturday
+// June 3, 2023 || 2:43pm.
 ### 
 POST https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/post
 Content-Type: application/json
