@@ -22,8 +22,14 @@ router.post('/post', async (request, response) => {
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
         // post to the Coin endpoint
-        await Coin.insertMany(coins);
-        response.status(200).json(coins);
+        await Coin.insertMany(coins)
+        .then(() => {
+            console.log('Coins were added to the database.');
+            response.status(200).send('Coins were added successfully.')
+        }).catch(error => {
+            console.error('Error adding coins to the database:', error)
+            response.status(500).send('An error occurred.')
+        })
     } catch (errorHM) {
         console.log('Request Body', request.body);
         response.status(400).json(console.log('Error!', errorHM));
