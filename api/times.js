@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Time = require('../models/time')
 
-router.get('/, (request, response) => {
+router.get('/', (request, response) => {
     Time.findOne({}, {}, {sort: { lastUpdate: -1 }})
     .then(time => {
         response.json(time)
