@@ -6,7 +6,7 @@ router.get('/', (request, response) => {
     Time.findOne({}, {}, {sort: { lastUpdate: -1 }})
     .then(time => {
         console.log('GET request was successful.')
-        response.send(200).json(time)
+        response.json(time)
     })
     .catch(error => {
         console.error('Error retrieving lastUpdate:', error);
