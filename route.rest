@@ -110,3 +110,7 @@ Content-Type: application/json
 "total_supply": 28907428651.463,
 "total_volume": 1406126561
 }
+
+###
+GET https://epistemica-x-db-git-main-clariti23.vercel.app/api/time/
+Content-Type: application/json
