@@ -24,3 +24,5 @@ router.post('/time', (request, response) => {
         response.status(500).send('An error occurred.')
     })
 })
+
+module.exports = router;
