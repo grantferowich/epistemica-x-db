@@ -5,7 +5,8 @@ const Time = require('../models/time')
 router.get('/', (request, response) => {
     Time.findOne({}, {}, {sort: { lastUpdate: -1 }})
     .then(time => {
-        response.json(time)
+        console.log('GET request was successful.')
+        response.send(200).json(time)
     })
     .catch(error => {
         console.error('Error retrieving lastUpdate:', error);
