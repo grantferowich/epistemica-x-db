@@ -49,7 +49,7 @@ const coinsRouter = require('./api/coins.js');
 // mount the router, /users is the parent for everything in the userRouters
 app.use('/api/user', usersRouter);
 app.use('/api/basket', basketsRouter);
-app.use('/api/coins', coinsRouter)
+app.use('/api/coin', coinsRouter)
 // ensure the page can render what is located in the views dir
 app.set("view engine", "ejs");
 

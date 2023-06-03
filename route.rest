@@ -78,4 +78,33 @@ Content-Type: application/json
 
 ### 
 POST https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/post
-Content-Type: application/json 
+Content-Type: application/json
+
+{
+"ath": 1.17,
+"ath_change_percentage": -14.7576,
+"ath_date": "2019-05-08T00:40:28.300Z",
+"atl": 0.877647,
+"atl_change_percentage": 13.90038,
+"atl_date": "2023-03-11T08:02:13.981Z",
+"circulating_supply": 28907428651.463,
+"current_price": 0.999554,
+"fully_diluted_valuation": 28892995696,
+"high_24h": 1.002,
+"id": "usd-coin",
+"image": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389",
+"last_updated": "2023-06-03T18:52:17.592Z",
+"low_24h": 0.997862,
+"market_cap": 28892995696,
+"market_cap_change_24h": -44049832.3671608,
+"market_cap_change_percentage_24h": -0.15223,
+"market_cap_rank": 5,
+"max_supply": null,
+"name": "USD Coin",
+"price_change_24h": -0.000878059010024468,
+"price_change_percentage_24h": -0.08777,
+"roi": null,
+"symbol": "usdc",
+"total_supply": 28907428651.463,
+"total_volume": 1406126561
+}

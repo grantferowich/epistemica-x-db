@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Coin = requires('../models/coin');
-const Time = requires('../models/time');
+const Coin = require('../models/coin');
+const Time = require('../models/time');
 const cors = require('cors');
 
 
