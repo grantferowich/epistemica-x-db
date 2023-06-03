@@ -75,7 +75,7 @@ const coinSchema = new mongoose.Schema({
   },
   max_supply: {
     type: Number,
-    required: true
+    required: false,
   },
   name: {
     type: String,
@@ -90,7 +90,7 @@ const coinSchema = new mongoose.Schema({
     required: true
   },
   roi: {
-    type: Object,
+    type: Number,
     required: false
   },
   symbol: {
