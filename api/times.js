@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Time = require('../models/time')
 
-router.get('/', (request, response) => {
+router.get('/get', (request, response) => {
     Time.findOne({}, {}, {sort: { lastUpdate: -1 }})
     .then(time => {
         console.log('GET request was successful.')
@@ -14,7 +14,7 @@ router.get('/', (request, response) => {
     })
 })
 
-router.post('/', (request, response) => {
+router.post('/post', (request, response) => {
     const newTime = new Time();
     newTime.save()
     .then(() => {
