@@ -90,9 +90,21 @@ const coinSchema = new mongoose.Schema({
     required: true
   },
   roi: {
-    type: Number,
-    required: false, 
-    default: 0
+      times: {
+        type: Number,
+        default: 0, 
+        required: false
+      },
+      currency: {
+        type: String,
+        default: 'btc',
+        required: false
+      },
+      percentage: {
+        type: Number,
+        default: 0,
+        required: false
+      }
   },
   symbol: {
     type: String,
