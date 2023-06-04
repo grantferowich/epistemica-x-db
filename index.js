@@ -11,6 +11,7 @@ const app = express();
 const mongoose = require('mongoose');
 const mongoStr = process.env.DATABASE_URL;
 
+
 // middleware
 const cors = require('cors');
 const options = {
@@ -31,7 +32,7 @@ db.on('error', (error) => console.log(error));
 db.once('open', () => console.log('Connected to Mongoose Database'));
 
 // app.use(express.json());
-app.use(express.json());
+app.use(express.json({ limit: '10mb'}));
 
 
 

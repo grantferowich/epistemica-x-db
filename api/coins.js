@@ -4,7 +4,7 @@ const Coin = require('../models/coin');
 const Time = require('../models/time');
 const cors = require('cors');
 
-
+router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
     try {
         const coinsArr = await Coin.find();
