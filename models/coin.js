@@ -35,7 +35,7 @@ const coinSchema = new mongoose.Schema({
   },
   fully_diluted_valuation: {
     type: Number,
-    required: true
+    required: false,
   },
   high_24h: {
     type: Number,
