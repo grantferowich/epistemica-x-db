@@ -3,35 +3,35 @@ const mongoose = require('mongoose');
 const coinSchema = new mongoose.Schema({
   ath: {
     type: Number,
-    required: true
+    required: false
   },
   ath_change_percentage: {
     type: Number,
-    required: true
+    required: false
   },
   ath_date: {
     type: Date,
-    required: true
+    required: false
   },
   atl: {
     type: Number,
-    required: true
+    required: false
   },
   atl_change_percentage: {
     type: Number,
-    required: true
+    required: false
   },
   atl_date: {
     type: Date,
-    required: true
+    required: false
   },
   circulating_supply: {
     type: Number,
-    required: true
+    required: false
   },
   current_price: {
     type: Number,
-    required: true
+    required: false
   },
   fully_diluted_valuation: {
     type: Number,
@@ -39,39 +39,39 @@ const coinSchema = new mongoose.Schema({
   },
   high_24h: {
     type: Number,
-    required: true
+    required: false,
   },
   id: {
     type: String,
-    required: true
+    required: false
   },
   image: {
     type: String,
-    required: true
+    required: false,
   },
   last_updated: {
     type: Date,
-    required: true
+    required: false, 
   },
   low_24h: {
     type: Number,
-    required: true
+    required: false, 
   },
   market_cap: {
     type: Number,
-    required: true
+    required: false, 
   },
   market_cap_change_24h: {
     type: Number,
-    required: true
+    required: false,
   },
   market_cap_change_percentage_24h: {
     type: Number,
-    required: true
+    required: false,
   },
   market_cap_rank: {
     type: Number,
-    required: true
+    required: false,
   },
   max_supply: {
     type: Number,
@@ -83,11 +83,11 @@ const coinSchema = new mongoose.Schema({
   },
   price_change_24h: {
     type: Number,
-    required: true
+    required: false, 
   },
   price_change_percentage_24h: {
     type: Number,
-    required: true
+    required: false, 
   },
   roi: {
       times: {
@@ -108,15 +108,15 @@ const coinSchema = new mongoose.Schema({
   },
   symbol: {
     type: String,
-    required: true
+    required: false
   },
   total_supply: {
     type: Number,
-    required: true
+    required: false,
   },
   total_volume: {
     type: Number,
-    required: true
+    required: false,
   }
 });
 
