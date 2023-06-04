@@ -114,3 +114,7 @@ Content-Type: application/json
 ###
 GET https://epistemica-x-db-git-main-clariti23.vercel.app/api/time/get
 Content-Type: application/json
+
+### 
+GET https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/get250
+Content-Type: application/json
