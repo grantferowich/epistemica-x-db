@@ -7338,3 +7338,5 @@ Content-Type: application/json
     "last_updated": "2023-06-04T14:29:16.720Z"
   }
 ]
+###
+DELETE https://epistemica-x-db.vercel.app/api/basket/delete/647d3728d6b119a90e5e9a9d
