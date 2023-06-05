@@ -31,9 +31,9 @@ router.post('/post', (request, response) => {
 
 router.get('/all', (request, response) => {
     const times = Time.find()
-    .then(time => {
+    .then(times => {
         console.log('GET request was successful.')
-        response.json(times)
+        response.status(200).json(times)
     })
     .catch(error => {
         console.error('Error retrieving lastUpdate:', error);
