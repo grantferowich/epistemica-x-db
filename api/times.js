@@ -26,4 +26,18 @@ router.post('/post', (request, response) => {
     })
 })
 
+
+router.get('/getAll', (request, response) => {
+    const times = Time.find()
+    .then(time => {
+        console.log('GET request was successful.')
+        response.json(times)
+    })
+    .catch(error => {
+        console.error('Error retrieving lastUpdate:', error);
+        response.status(500).send('An error occurred.')
+    })
+})
+
+
 module.exports = router;
