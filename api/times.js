@@ -4,7 +4,7 @@ const Time = require('../models/time')
 
 
 router.get('/get', (request, response) => {
-    Time.findOne({}, {}, {sort: { lastUpdateDate: -1 }})
+    Time.findOne({}, {}, {sort: { lastUpdateDate: 1 }})
     .then(time => {
         console.log('GET request was successful.')
         response.json(time)
@@ -14,6 +14,26 @@ router.get('/get', (request, response) => {
         response.status(500).send('An error occurred.')
     })
 })
+
+router.get('/last-record', (req, res) => {
+    Time.countDocuments()
+      .then(count => {
+        Time.findOne().skip(count - 1)
+          .then(lastRecord => {
+            res.json(lastRecord);
+          })
+          .catch(error => {
+            console.error('Error retrieving last record:', error);
+            res.status(500).send('An error occurred.');
+          });
+      })
+      .catch(error => {
+        console.error('Error counting documents:', error);
+        res.status(500).send('An error occurred.');
+      });
+  });
+  
+
 
 router.post('/post', (request, response) => {
     const newTime = new Time();
