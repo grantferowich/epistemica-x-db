@@ -29,16 +29,15 @@ router.post('/post', (request, response) => {
 })
 
 
-router.get('/all', (request, response) => {
-    const times = Time.find()
-    .then(times => {
+router.get('/all', async (request, response) => {
+    try {
+        const times = await Time.find()
         console.log('GET request was successful.')
         response.status(200).json(times)
-    })
-    .catch(error => {
+    } catch (error) {
         console.error('Error retrieving lastUpdate:', error);
         response.status(500).send('An error occurred.')
-    })
+    }
 })
 
 
