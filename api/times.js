@@ -19,7 +19,8 @@ router.post('/post', (request, response) => {
     const newTime = new Time();
     newTime.save()
     .then(() => {
-        response.send('New lastUpdate was successfully added:', newTime);
+        console.log('New lastUpdateDate was successfully added')
+        response.send(newTime);
     })
     .catch(error => {
         console.error('Error adding new lastUpdate:', error);
