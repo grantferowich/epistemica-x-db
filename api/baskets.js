@@ -92,7 +92,8 @@ router.delete('/delete/:id', async (request, response) => {
     // response.send('Delete by ID API')
     try {
         const idStr = request.params.id;
-        const resultHash = await User.findByIdAndDelete(idStr);
+        console.log('LOGGING IDSTR', idStr)
+        const resultHash = await Basket.findByIdAndDelete(idStr);
         response.send(`The following info was deleted: ${resultHash}`);
     } catch (errorStr) {
         response.sendStatus(500).json({message: errorStr})
