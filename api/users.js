@@ -10,15 +10,6 @@ const saltRoundsInt = 10;
 // it works!!! 
 // https://epistemica-x-db.vercel.app/api/getAll
 // get all users
-// router.get('/', async (request, response) =>{
-//     console.log('here')
-//     // try {
-//     //     const users = await User.find();
-//     //     response.json(users)
-//     // } catch (err){
-//     //     response.status(500).json({message: err.message})
-//     // }
-// })
 
 // every time a router function is touched the logger function is called
 
