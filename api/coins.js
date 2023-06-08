@@ -3,7 +3,12 @@ const router = express.Router();
 const Coin = require('../models/coin');
 const Time = require('../models/time');
 const cors = require('cors');
-
+const Redis = require('ioredis')
+const redisClient = new Redis({
+    host: 'redis-11407.c8.us-east-1-4.ec2.cloud.redislabs.com:11407',
+    port: 11407, 
+    password: 'Legend-alpha23'
+})
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
     try {
@@ -19,6 +24,7 @@ router.post('/post', async (request, response) => {
     try {
         // isolate 250 coins from api call
         const coins = request.body;
+        await redisClient.set('coins', JSON.stringify(coins))
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
         // post to the Coin endpoint
@@ -41,19 +47,6 @@ router.get('/get250', async (req, res) => {
       const coins = await Coin.find()
         .sort({ createdAt: -1 })
         .limit(250);
-  
-      res.json(coins);
-    } catch (error) {
-      console.error('Error retrieving coins:', error);
-      res.status(500).send('An error occurred.');
-    }
-  });
-
-router.get('/get50', async (req, res) => {
-    try {
-      const coins = await Coin.find()
-        .sort({ createdAt: -1 })
-        .limit(50);
   
       res.json(coins);
     } catch (error) {
