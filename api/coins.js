@@ -13,9 +13,7 @@ const redisClient = createClient({
         port: 11407
     }
 });
-
-redisClient.connect().catch(console.error)
-
+console.log('connected?', redisClient.connected)
 
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
