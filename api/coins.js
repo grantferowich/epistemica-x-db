@@ -9,7 +9,8 @@ const redisClient = new Redis({
     port: 11407, 
     password: 'Legend-alpha23'
 })
-redisClient.connect()
+try{ redisClient.connect() } catch(error) {console.log('error on line 12:', error)}
+
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
     try {
