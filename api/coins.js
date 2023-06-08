@@ -48,4 +48,17 @@ router.get('/get250', async (req, res) => {
       res.status(500).send('An error occurred.');
     }
   });
+
+router.get('/get50', async (req, res) => {
+    try {
+      const coins = await Coin.find()
+        .sort({ createdAt: -1 })
+        .limit(50);
+  
+      res.json(coins);
+    } catch (error) {
+      console.error('Error retrieving coins:', error);
+      res.status(500).send('An error occurred.');
+    }
+  });
 module.exports = router;
