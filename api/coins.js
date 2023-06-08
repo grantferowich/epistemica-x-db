@@ -23,18 +23,21 @@ router.post('/post', async (request, response) => {
         const coinsStr = JSON.stringify(coins, null, 2);
         const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json';
         
-        fs.open(filePathStr, 'w', (error, fd) =>{
+        // open the file
+        fs.open(filePathStr, 'a', (error, fd) =>{
             if (error) {
                 console.error(error);
                 return response.status(500).send('Error opening file.')
             }
 
+            // write to the file
             fs.writeFile(filePathStr, coinsStr, ( error ) => {
                 if (error) {
                     console.error('Error writing to file:', error);
                     response.status(500).send('An error occurred while writing to the file.');
                 } 
 
+                // close the file
                 fs.close(fd, (error) => {
                     if (error) {
                         console.error(error);
