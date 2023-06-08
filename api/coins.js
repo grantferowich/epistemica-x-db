@@ -20,20 +20,11 @@ router.post('/post', async (request, response) => {
     try {
         // isolate 250 coins from api call
         const coins = request.body;
-        const coinsStr = JSON.stringify(coins, null, 2);
+        const coinsStr = JSON.stringify(coins);
         const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json'
-        
-    
-        request.on('end', function (){
+   
         // write to the file
-            fs.writeFileSync(filePathStr, coinsStr, () => {
-                respond.end()
-                });
-            })
-            
-            
-      
-        
+        fs.writeFileSync(filePathStr, coinsStr)
 
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
