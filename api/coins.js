@@ -21,7 +21,8 @@ router.post('/post', async (request, response) => {
         // isolate 250 coins from api call
         const coins = request.body;
         const coinsStr = JSON.stringify(coins, null, 2);
-        const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json'
+        const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json';
+        
         fs.writeFile(filePathStr, coinsStr, ( error ) => {
             if (error) {
                 console.error('Error writing file:', error);
