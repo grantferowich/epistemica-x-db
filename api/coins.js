@@ -22,10 +22,8 @@ router.post('/post', async (request, response) => {
         const coins = request.body;
         const coinsStr = JSON.stringify(coins);
         const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json'
-   
         // write to the file
-        fs.writeFileSync(filePathStr, coinsStr)
-
+        fs.writeFileSync(filePathStr, coinsStr);
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
         // post to the Coin endpoint
