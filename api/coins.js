@@ -16,8 +16,8 @@ const cors = require('cors');
 // });
 
 // After setting up the event handlers, you can check the connection status
-console.log('Connected?', redisClient.connected);
-console.log('connected?', redisClient.connected)
+// console.log('Connected?', redisClient.connected);
+// console.log('connected?', redisClient.connected)
 
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
