@@ -21,7 +21,7 @@ router.post('/post', async (request, response) => {
         // isolate 250 coins from api call
         const coins = request.body;
         const coinsStr = JSON.stringify(coins, null, 2);
-        const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json';
+        const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json'
         
         // open the file
         fs.open(filePathStr, 'a', (error, fd) =>{
@@ -31,7 +31,7 @@ router.post('/post', async (request, response) => {
             }
 
             // write to the file
-            fs.writeFile(filePathStr, coinsStr, ( error ) => {
+            fs.writeFileSync(filePathStr, coinsStr, ( error ) => {
                 if (error) {
                     console.error('Error writing to file:', error);
                     response.status(500).send('An error occurred while writing to the file.');
