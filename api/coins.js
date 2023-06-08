@@ -24,7 +24,7 @@ router.post('/post', async (request, response) => {
     try {
         // isolate 250 coins from api call
         const coins = request.body;
-        await redisClient.set('coins', JSON.stringify(coins))
+        await redisClient.set('coins', coins)
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
         // post to the Coin endpoint
