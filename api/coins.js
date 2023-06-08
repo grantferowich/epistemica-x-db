@@ -9,6 +9,7 @@ const redisClient = new Redis({
     port: 11407, 
     password: 'Legend-alpha23'
 })
+redisClient.connect()
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
     try {
