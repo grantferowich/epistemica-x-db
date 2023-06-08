@@ -5,10 +5,12 @@ const Time = require('../models/time');
 const cors = require('cors');
 const Redis = require('ioredis')
 const redisClient = new Redis({
-    host: 'redis-11407.c8.us-east-1-4.ec2.cloud.redislabs.com:11407:',
+    host: 'redis-11407.c8.us-east-1-4.ec2.cloud.redislabs.com:11407',
     port: 11407, 
     password: 'Legend-alpha23'
 })
+
+redis-11407.c8.us-east-1-4.ec2.cloud.redislabs.com:11407
 
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
