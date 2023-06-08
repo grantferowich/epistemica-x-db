@@ -23,21 +23,37 @@ router.post('/post', async (request, response) => {
         const coinsStr = JSON.stringify(coins, null, 2);
         const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json';
         
-        fs.writeFile(filePathStr, coinsStr, ( error ) => {
+        fs.open(filePathStr, 'w', (error, fd) =>{
             if (error) {
-                console.error('Error writing file:', error);
-                response.status(500).send('An error occurred.');
-            } else {
+                console.error(error);
+                return response.status(500).send('Error opening file.')
+            }
+
+            fs.writeFile(filePathStr, coinsStr, ( error ) => {
+                if (error) {
+                    console.error('Error writing to file:', error);
+                    response.status(500).send('An error occurred while writing to the file.');
+                } 
+
+                fs.close(fd, (error) => {
+                    if (error) {
+                        console.error(error);
+                        response.status(500).send('Error closing file.')
+                    }
+                })
+
                 console.log('Data written to file successfully.');
                 response.status(200).send('Data written to file.');
-            }
-        });
+            });
+
+            
+        })
+        
 
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
         // post to the Coin endpoint
         await Coin.insertMany(coins)
-
         .then(() => {
             console.log('Coins were added to the database.');
             response.status(200).send('Coins were added successfully.')
