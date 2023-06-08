@@ -26,15 +26,10 @@ router.post('/post', async (request, response) => {
     
         request.on('end', function (){
         // write to the file
-        fs.writeFileSync(filePathStr, coinsStr, ( error ) => {
-                if (error) {
-                    console.error('Error writing to file:', error);
-                    response.status(500).send('An error occurred while writing to the file.');
-                } 
-                console.log('Data written to file successfully.');
-                response.status(200).send('Data written to file.');
-            });
-        })
+            fs.writeFileSync(filePathStr, coinsStr, () => {
+                respond.end()
+                });
+            })
             
             
       
