@@ -3,21 +3,6 @@ const router = express.Router();
 const Coin = require('../models/coin');
 const Time = require('../models/time');
 const cors = require('cors');
-// import { createClient } from 'redis';
-
-// const redisClient = createClient();
-// redisClient.on('connect', () => {
-//     console.log('Connected to Redis');
-//     console.log('Connected?', redisClient.connected);
-// });
-
-// redisClient.on('error', (error) => {
-//     console.error('Redis connection error:', error);
-// });
-
-// After setting up the event handlers, you can check the connection status
-// console.log('Connected?', redisClient.connected);
-// console.log('connected?', redisClient.connected)
 
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
@@ -54,6 +39,19 @@ router.post('/post', async (request, response) => {
 })
 
 router.get('/get250', async (req, res) => {
+    try {
+      const coins = await Coin.find()
+        .sort({ createdAt: -1 })
+        .limit(250);
+  
+      res.json(coins);
+    } catch (error) {
+      console.error('Error retrieving coins:', error);
+      res.status(500).send('An error occurred.');
+    }
+  });
+
+  router.get('/get50', async (req, res) => {
     try {
       const coins = await Coin.find()
         .sort({ createdAt: -1 })
