@@ -17,7 +17,7 @@ router.get('/getAll', cors(), async (request, response) => {
 })
 
 const writeToFile = (str) => {
-    const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json'
+    const filePathStr = 'tableData.json'
     fs.writeFileSync(filePathStr, str);
 }
 router.post('/post', async (request, response) => {
