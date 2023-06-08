@@ -20,6 +20,7 @@ const writeToFile = (str) => {
     const filePathStr = 'tableData.json'
     fs.writeFileSync(filePathStr, str);
 }
+
 router.post('/post', async (request, response) => {
     try {
         // isolate 250 coins from api call
