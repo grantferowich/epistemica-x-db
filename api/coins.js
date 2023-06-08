@@ -10,7 +10,7 @@ const redisClient = new Redis({
     password: 'Legend-alpha23'
 })
 
-redis-11407.c8.us-east-1-4.ec2.cloud.redislabs.com:11407
+
 
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
