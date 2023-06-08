@@ -5,14 +5,7 @@ const Time = require('../models/time');
 const cors = require('cors');
 import { createClient } from 'redis';
 
-const redisClient = createClient({
-    legacyMode: true,
-    password: 'Legend-alpha23',
-    socket: {
-        host: 'redis-11407.c8.us-east-1-4.ec2.cloud.redislabs.com',
-        port: 11407
-    }
-});
+const redisClient = createClient();
 redisClient.on('connect', () => {
     console.log('Connected to Redis');
     console.log('Connected?', redisClient.connected);
