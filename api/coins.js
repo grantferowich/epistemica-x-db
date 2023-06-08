@@ -9,6 +9,7 @@ const redisClient = new Redis({
     port: 11407, 
     password: 'Legend-alpha23'
 })
+
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
     try {
@@ -24,6 +25,7 @@ router.post('/post', async (request, response) => {
     try {
         // isolate 250 coins from api call
         const coins = request.body;
+        await redisClient.connect();
         await redisClient.set('coins', coins)
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
@@ -40,6 +42,7 @@ router.post('/post', async (request, response) => {
         console.log('Request Body', request.body);
         response.status(400).json(console.log('Error!', errorHM));
     }  
+    await redisClient.disconnect()
 })
 
 router.get('/get250', async (req, res) => {
@@ -54,4 +57,5 @@ router.get('/get250', async (req, res) => {
       res.status(500).send('An error occurred.');
     }
   });
+  
 module.exports = router;
