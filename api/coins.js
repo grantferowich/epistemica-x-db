@@ -16,14 +16,18 @@ router.get('/getAll', cors(), async (request, response) => {
     }
 })
 
+const writeToFile = (str) => {
+    const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json'
+    fs.writeFileSync(filePathStr, str);
+}
 router.post('/post', async (request, response) => {
     try {
         // isolate 250 coins from api call
         const coins = request.body;
         const coinsStr = JSON.stringify(coins);
-        const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json'
+        // const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json'
         // write to the file
-        fs.writeFileSync(filePathStr, coinsStr);
+        writeToFile(coinsStr);
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
         // post to the Coin endpoint
