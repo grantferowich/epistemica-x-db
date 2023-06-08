@@ -6,7 +6,7 @@ const cors = require('cors');
 import { createClient } from 'redis';
 
 const redisClient = createClient({
-    password: '<password>',
+    password: 'Legend-alpha23',
     socket: {
         host: 'redis-11407.c8.us-east-1-4.ec2.cloud.redislabs.com',
         port: 11407
@@ -47,7 +47,6 @@ router.post('/post', async (request, response) => {
         console.log('Request Body', request.body);
         response.status(400).json(console.log('Error!', errorHM));
     }  
-    await redisClient.disconnect()
 })
 
 router.get('/get250', async (req, res) => {
