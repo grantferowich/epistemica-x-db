@@ -3,17 +3,17 @@ const router = express.Router();
 const Coin = require('../models/coin');
 const Time = require('../models/time');
 const cors = require('cors');
-import { createClient } from 'redis';
+// import { createClient } from 'redis';
 
-const redisClient = createClient();
-redisClient.on('connect', () => {
-    console.log('Connected to Redis');
-    console.log('Connected?', redisClient.connected);
-});
+// const redisClient = createClient();
+// redisClient.on('connect', () => {
+//     console.log('Connected to Redis');
+//     console.log('Connected?', redisClient.connected);
+// });
 
-redisClient.on('error', (error) => {
-    console.error('Redis connection error:', error);
-});
+// redisClient.on('error', (error) => {
+//     console.error('Redis connection error:', error);
+// });
 
 // After setting up the event handlers, you can check the connection status
 console.log('Connected?', redisClient.connected);
@@ -35,7 +35,7 @@ router.post('/post', async (request, response) => {
         // isolate 250 coins from api call
         const coins = request.body;
         
-        await redisClient.set('coins', coins)
+        // await redisClient.set('coins', coins)
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
         // post to the Coin endpoint
