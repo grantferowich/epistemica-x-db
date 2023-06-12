@@ -82,7 +82,7 @@ router.get('/get101-200', async (req, res) => {
     }
   });
 
-router.get('/get200-250', async (req, res) => {
+router.get('/get201-250', async (req, res) => {
     try {
       const coins = await Coin.find()
         .sort({ createdAt: -1 })
