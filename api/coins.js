@@ -48,6 +48,16 @@ router.get('/get250', async (req, res) => {
       console.error('Error retrieving coins:', error);
       res.status(500).send('An error occurred.');
     }
-  });
+});
+
+router.delete('/delete-all', async (request, response) => {
+  try {
+    await Coin.deleteMany();
+    response.json({message: 'All coins have been deleted.'})
+  } catch (error) {
+    console.error('Error deleting the coins:', error);
+    response.status(500).send('An error occured with the /delete-all request.')
+  }
+})
 
 module.exports = router;
