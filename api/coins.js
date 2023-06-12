@@ -16,10 +16,6 @@ router.get('/getAll', cors(), async (request, response) => {
     }
 })
 
-const writeToFile = (str) => {
-    const filePathStr = '/Users/knightoffaith/Desktop/Code/prodProjects/epistemica-x/src/data/tableData.json'
-    fs.writeFileSync(filePathStr, str);
-}
 
 router.post('/post', async (request, response) => {
     try {
@@ -59,10 +55,38 @@ router.get('/get250', async (req, res) => {
     }
   });
 
-router.get('/get50', async (req, res) => {
+router.get('/get1-100', async (req, res) => {
     try {
       const coins = await Coin.find()
         .sort({ createdAt: -1 })
+        .limit(100);
+  
+      res.json(coins);
+    } catch (error) {
+      console.error('Error retrieving coins:', error);
+      res.status(500).send('An error occurred.');
+    }
+  });
+
+router.get('/get101-200', async (req, res) => {
+    try {
+      const coins = await Coin.find()
+        .sort({ createdAt: -1 })
+        .skip(100)
+        .limit(100);
+  
+      res.json(coins);
+    } catch (error) {
+      console.error('Error retrieving coins:', error);
+      res.status(500).send('An error occurred.');
+    }
+  });
+
+router.get('/get200-250', async (req, res) => {
+    try {
+      const coins = await Coin.find()
+        .sort({ createdAt: -1 })
+        .skip(200)
         .limit(50);
   
       res.json(coins);
