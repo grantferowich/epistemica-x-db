@@ -51,44 +51,44 @@ router.get('/get250', async (req, res) => {
     }
   });
 
-router.get('/get1-100', async (req, res) => {
-    try {
-      const coins = await Coin.find()
-        .sort({ createdAt: -1 })
-        .limit(100);
+// router.get('/get1-100', async (req, res) => {
+//     try {
+//       const coins = await Coin.find()
+//         .sort({ createdAt: -1, market_cap_rank: 1})
+//         .limit(100);
   
-      res.json(coins);
-    } catch (error) {
-      console.error('Error retrieving coins:', error);
-      res.status(500).send('An error occurred.');
-    }
-  });
+//       res.json(coins);
+//     } catch (error) {
+//       console.error('Error retrieving coins:', error);
+//       res.status(500).send('An error occurred.');
+//     }
+//   });
 
-router.get('/get101-200', async (req, res) => {
-    try {
-      const coins = await Coin.find()
-        .sort({ createdAt: -1 })
-        .skip(100)
-        .limit(100);
+// router.get('/get101-200', async (req, res) => {
+//     try {
+//       const coins = await Coin.find()
+//         .sort({ createdAt: -1 })
+//         .skip(100)
+//         .limit(100);
   
-      res.json(coins);
-    } catch (error) {
-      console.error('Error retrieving coins:', error);
-      res.status(500).send('An error occurred.');
-    }
-  });
+//       res.json(coins);
+//     } catch (error) {
+//       console.error('Error retrieving coins:', error);
+//       res.status(500).send('An error occurred.');
+//     }
+//   });
 
-router.get('/get201-250', async (req, res) => {
-    try {
-      const coins = await Coin.find()
-        .sort({ createdAt: -1 })
-        .skip(200)
-        .limit(50);
+// router.get('/get201-250', async (req, res) => {
+//     try {
+//       const coins = await Coin.find()
+//         .sort({ createdAt: -1 })
+//         .skip(200)
+//         .limit(50);
   
-      res.json(coins);
-    } catch (error) {
-      console.error('Error retrieving coins:', error);
-      res.status(500).send('An error occurred.');
-    }
-  });
+//       res.json(coins);
+//     } catch (error) {
+//       console.error('Error retrieving coins:', error);
+//       res.status(500).send('An error occurred.');
+//     }
+//   });
 module.exports = router;
