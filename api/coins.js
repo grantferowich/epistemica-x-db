@@ -43,7 +43,6 @@ router.get('/get250', async (req, res) => {
       const coins = await Coin.find()
         .sort({ createdAt: -1 })
         .limit(250);
-  
       res.json(coins);
     } catch (error) {
       console.error('Error retrieving coins:', error);
