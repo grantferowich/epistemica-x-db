@@ -2,9 +2,8 @@ if (process.env.NODE_ENV !== 'production' ) {
     require('dotenv').config();
 }
 
-
-
 require('dotenv').config();
+
 
 // constants
 const User = require('./models/user.js');
