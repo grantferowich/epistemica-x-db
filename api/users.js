@@ -42,15 +42,15 @@ router.post('/post', async (request, response) => {
         return response.status(401).json({message:'Password cannot be password.'});
     }
 
-
     // wrap the data to be posted in a try-catch block 
     // in the event name or email data type invalid
     try {
         const dataToSave = await data.save();
-        console.log(data)
+        console.log('200', data)
         response.status(200).json(dataToSave)
     } catch (errorObj) {
-        response.status(400).json({message: 'Invalid name, email, and/or password.'})
+        console.log('401', errorObj)
+        response.status(401).json({message: 'Invalid name, email, and/or password.'});
     }
 })
 
