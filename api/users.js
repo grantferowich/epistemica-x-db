@@ -50,7 +50,7 @@ router.post('/post', async (request, response) => {
         console.log(data)
         response.status(200).json(dataToSave)
     } catch (errorObj) {
-        response.status(400).json({message: errorObj.message})
+        response.status(400).json({message: 'Invalid name, email, and/or password.'})
     }
 })
 
