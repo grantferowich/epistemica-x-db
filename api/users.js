@@ -25,6 +25,24 @@ router.post('/post', async (request, response) => {
         email: request.body.email,
         password: hashedPasswordStr
     })
+
+    if (data.name === '' || data.name === null){
+        return response.status(401).json({message:'Invalid name.'});
+    }
+
+    if (data.email === '' || data.email === null){
+        return response.status(401).json({message:'Invalid email.'});
+    }
+
+    if (data.password === '' || data.password === null){
+        return response.status(401).json({message:'Invalid password.'});
+    }
+
+    if (data.password === 'password'){
+        return response.status(401).json({message:'Password cannot be password.'});
+    }
+
+
     // wrap the data to be posted in a try-catch block 
     // in the event name or email data type invalid
     try {

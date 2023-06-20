@@ -34,8 +34,9 @@ Content-Type: application/json
 }
 
 ### 
-POST https://epistemica-x-db.vercel.app/api/user/login
+POST https://epistemica-x-db.vercel.app/api/user/post
 Content-Type: application/json
+
 {
   "name": "",
   "email": "joe@email.com",
@@ -43,8 +44,9 @@ Content-Type: application/json
 }
 
 ### Bad password: Expect "Invalid email."
-POST https://epistemica-x-db.vercel.app/api/user/login
+POST https://epistemica-x-db.vercel.app/api/user/post
 Content-Type: application/json
+
 {
     "email":"g.ferowich@gmail.com",
     "password":""
