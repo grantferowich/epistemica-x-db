@@ -14,7 +14,7 @@ Content-Type: application/json
     "subscribedToChannel": "Web Dev Simplified"
 }
 
-### 
+### Expect invalid password: Yup
 POST https://epistemica-x-db.vercel.app/api/user/login
 Content-Type: application/json
 
@@ -24,21 +24,29 @@ Content-Type: application/json
 }
 
 
-### Bad email
+### Bad email: Expect invalid email: Yup
 POST https://epistemica-x-db.vercel.app/api/user/login
 Content-Type: application/json
 
 {
     "email":"g.erowich@gmail.com",
-    "password":"legend"
+    "password":"legend-alpha"
 }
 
-## Bad password
+### 
 POST https://epistemica-x-db.vercel.app/api/user/login
 Content-Type: application/json
-
 {
-    "email":"g.erowich@gmail.com",
+  "name": "",
+  "email": "joe@email.com",
+  "password": "joejoejoe"
+}
+
+### Bad password: Expect "Invalid email."
+POST https://epistemica-x-db.vercel.app/api/user/login
+Content-Type: application/json
+{
+    "email":"g.ferowich@gmail.com",
     "password":""
 }
 

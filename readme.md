@@ -4,7 +4,6 @@ Some dependencies
 2. npm install bcrypt
    - bcrypt will salt the passwords before they are saved
 3. npm install body-parser 
-4. npm install mongoose-auto-increment
 
 
 ## Dev notes

@@ -25,7 +25,6 @@ router.post('/post', async (request, response) => {
         email: request.body.email,
         password: hashedPasswordStr
     })
-
     // wrap the data to be posted in a try-catch block 
     // in the event name or email data type invalid
     try {
