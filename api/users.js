@@ -57,7 +57,7 @@ router.post('/login', logger, async (request, response) => {
         // search the NoSQL data base 
         const userObj = await User.findOne({email: emailStr});
         if (!userObj){
-            return response.status(401).json('Invalid email.'});
+            return response.status(401).json('Invalid email.');
         }
 
         const isPasswordValidToF = await bcrypt.compare(passwordStr, userObj.password);

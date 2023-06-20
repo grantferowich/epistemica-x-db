@@ -33,6 +33,15 @@ Content-Type: application/json
     "password":"legend"
 }
 
+## Bad password
+POST https://epistemica-x-db.vercel.app/api/user/login
+Content-Type: application/json
+
+{
+    "email":"g.erowich@gmail.com",
+    "password":""
+}
+
 ###
 POST https://epistemica-x-db-git-main-clariti23.vercel.app/api/basket/post
 Content-Type: application/json
