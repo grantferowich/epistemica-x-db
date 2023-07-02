@@ -43,6 +43,16 @@ Content-Type: application/json
   "password": "joejoejoe"
 }
 
+### 
+POST https://epistemica-x-db.vercel.app/api/user/post
+Content-Type: application/json
+
+{
+  "name": "Joe",
+  "email": "joe.email.com",
+  "password": "joejoejoe"
+}
+
 ### Bad password: Expect "Invalid email."
 POST https://epistemica-x-db.vercel.app/api/user/post
 Content-Type: application/json

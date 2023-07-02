@@ -42,6 +42,10 @@ router.post('/post', async (request, response) => {
         return response.status(401).json({message:'Password cannot be password.'});
     }
 
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){
+        return response.status.json({ message: 'Invalid email.'});
+    }
+    
     // wrap the data to be posted in a try-catch block 
     // in the event name or email data type invalid
     try {

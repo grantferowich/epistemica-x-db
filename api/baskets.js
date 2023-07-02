@@ -21,6 +21,9 @@ router.post('/post', cors(), async (request, response) => {
             asset1NameStr: request.body.asset1HM.asset1NameStr,
             asset1IndexPriceInt: request.body.asset1HM.asset1IndexPriceInt,
             asset1QuantityInt: request.body.asset1HM.asset1QuantityInt,
+            asset1PresentPriceInt: request.body.asset1HM.asset1PresentPriceInt,
+            asset1InitialPositionValueInt: request.body.asset1HM.asset1InitialValueInt,
+            asset1PresentPositionValueInt: request.body.asset1HM.asset1PresentPositionValueInt,
             asset1WeightInt: request.body.asset1HM.asset1WeightInt,
             asset1APIKeyStr: request.body.asset1HM.asset1APIKeyStr,
             asset1LoSStr: request.body.asset1HM.asset1LoSStr
@@ -29,6 +32,9 @@ router.post('/post', cors(), async (request, response) => {
             asset2NameStr: request.body.asset2HM.asset2NameStr,
             asset2IndexPriceInt: request.body.asset2HM.asset2IndexPriceInt,
             asset2QuantityInt: request.body.asset2HM.asset2QuantityInt,
+            asset2PresentPriceInt: request.body.asset2HM.asset2PresentPriceInt,
+            asset2InitialPositionValueInt: request.body.asset2HM.asset2InitialValueInt,
+            asset2PresentPositionValueInt: request.body.asset2HM.asset2PresentPositionValueInt,
             asset2WeightInt: request.body.asset2HM.asset2WeightInt,
             asset2APIKeyStr: request.body.asset2HM.asset2APIKeyStr,
             asset2LoSStr: request.body.asset2HM.asset2LoSStr
@@ -37,6 +43,9 @@ router.post('/post', cors(), async (request, response) => {
             asset3NameStr: request.body.asset3HM.asset3NameStr,
             asset3IndexPriceInt: request.body.asset3HM.asset3IndexPriceInt,
             asset3QuantityInt: request.body.asset3HM.asset3QuantityInt,
+            asset3PresentPriceInt: request.body.asset3HM.asset3PresentPriceInt,
+            asset3InitialPositionValueInt: request.body.asset3HM.asset3InitialValueInt,
+            asset3PresentPositionValueInt: request.body.asset3HM.asset3PresentPositionValueInt,
             asset3WeightInt: request.body.asset3HM.asset3WeightInt,
             asset3APIKeyStr: request.body.asset3HM.asset3APIKeyStr,
             asset3LoSStr: request.body.asset3HM.asset3LoSStr
@@ -45,6 +54,9 @@ router.post('/post', cors(), async (request, response) => {
             asset4NameStr: request.body.asset4HM.asset4NameStr,
             asset4IndexPriceInt: request.body.asset4HM.asset4IndexPriceInt,
             asset4QuantityInt: request.body.asset4HM.asset4QuantityInt,
+            asset4PresentPriceInt: request.body.asset4HM.asset4PresentPriceInt,
+            asset4InitialPositionValueInt: request.body.asset4HM.asset4InitialValueInt,
+            asset4PresentPositionValueInt: request.body.asset4HM.asset4PresentPositionValueInt,
             asset4WeightInt: request.body.asset4HM.asset4WeightInt,
             asset4APIKeyStr: request.body.asset4HM.asset4APIKeyStr,
             asset4LoSStr: request.body.asset4HM.asset4LoSStr
@@ -53,6 +65,9 @@ router.post('/post', cors(), async (request, response) => {
             asset5NameStr: request.body.asset5HM.asset5NameStr,
             asset5IndexPriceInt: request.body.asset5HM.asset5IndexPriceInt,
             asset5QuantityInt: request.body.asset5HM.asset5QuantityInt,
+            asset5PresentPriceInt: request.body.asset5HM.asset5PresentPriceInt,
+            asset5InitialPositionValueInt: request.body.asset5HM.asset5InitialValueInt,
+            asset5PresentPositionValueInt: request.body.asset5HM.asset5PresentPositionValueInt,
             asset5WeightInt: request.body.asset5HM.asset5WeightInt,
             asset5APIKeyStr: request.body.asset5HM.asset5APIKeyStr,
             asset5LoSStr: request.body.asset5HM.asset5LoSStr
