@@ -41,6 +41,18 @@ const basketSchema = new mongoose.Schema({
             type: Number,
             required: true
         }, 
+        asset1PresentPriceInt: {
+            type: Number,
+            required: true
+        },
+        asset1InitialPositionValueIntInt: {
+            type: Number,
+            required: true
+        },
+        asset1PresentPositionValueInt: {
+            type: Number,
+            required: true
+        },
         asset1WeightInt: {
             type: Number,
             required: true
@@ -70,6 +82,18 @@ const basketSchema = new mongoose.Schema({
             type: Number,
             default: 0,
             required: false,
+        },
+        asset2PresentPriceInt: {
+            type: Number,
+            required: false
+        },
+        asset2InitialPositionValueIntInt: {
+            type: Number,
+            required: false
+        },
+        asset2PresentPositionValueInt: {
+            type: Number,
+            required: false
         },
         asset2WeightInt: {
             type: Number,
@@ -103,6 +127,18 @@ const basketSchema = new mongoose.Schema({
             default: 0,
             required: false,
         },
+        asset3PresentPriceInt: {
+            type: Number,
+            required: false
+        },
+        asset3InitialPositionValueIntInt: {
+            type: Number,
+            required: false
+        },
+        asset3PresentPositionValueInt: {
+            type: Number,
+            required: false
+        },
         asset3WeightInt: {
             type: Number,
             required: false,
@@ -135,6 +171,18 @@ const basketSchema = new mongoose.Schema({
             default: 0,
             required: false,
         },
+        asset4PresentPriceInt: {
+            type: Number,
+            required: false
+        },
+        asset4InitialPositionValueIntInt: {
+            type: Number,
+            required: false
+        },
+        asset4PresentPositionValueInt: {
+            type: Number,
+            required: false
+        },
         asset4WeightInt: {
             type: Number,
             required: false,
@@ -166,6 +214,18 @@ const basketSchema = new mongoose.Schema({
             type: Number,
             default: 0,
             required: false,
+        },        
+        asset5PresentPriceInt: {
+            type: Number,
+            required: false
+        },
+        asset5InitialPositionValueIntInt: {
+            type: Number,
+            required: false
+        },
+        asset5PresentPositionValueInt: {
+            type: Number,
+            required: false
         },
         asset5WeightInt: {
             type: Number,
