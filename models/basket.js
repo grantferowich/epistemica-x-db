@@ -45,7 +45,7 @@ const basketSchema = new mongoose.Schema({
             type: Number,
             required: true
         },
-        asset1InitialPositionValueIntInt: {
+        asset1InitialPositionValueInt: {
             type: Number,
             required: true
         },
@@ -87,7 +87,7 @@ const basketSchema = new mongoose.Schema({
             type: Number,
             required: false
         },
-        asset2InitialPositionValueIntInt: {
+        asset2InitialPositionValueInt: {
             type: Number,
             required: false
         },
@@ -131,7 +131,7 @@ const basketSchema = new mongoose.Schema({
             type: Number,
             required: false
         },
-        asset3InitialPositionValueIntInt: {
+        asset3InitialPositionValueInt: {
             type: Number,
             required: false
         },
@@ -175,7 +175,7 @@ const basketSchema = new mongoose.Schema({
             type: Number,
             required: false
         },
-        asset4InitialPositionValueIntInt: {
+        asset4InitialPositionValueInt: {
             type: Number,
             required: false
         },
@@ -219,7 +219,7 @@ const basketSchema = new mongoose.Schema({
             type: Number,
             required: false
         },
-        asset5InitialPositionValueIntInt: {
+        asset5InitialPositionValueInt: {
             type: Number,
             required: false
         },
