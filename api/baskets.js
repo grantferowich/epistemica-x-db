@@ -84,7 +84,7 @@ router.post('/post', cors(), async (request, response) => {
         response.status(400).json(console.log('Error!', errorObj.message))
         console.log('Request Body', request.body)
     }
-})  
+})
 
 // getAll baskets
 router.get('/getAll', async (request, response) => {
