@@ -1,11 +1,8 @@
 if (process.env.NODE_ENV !== 'production' ) {
     require('dotenv').config();
 }
-
 require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
-
-
 /// db: test
 // collection: coins
 async function deleteDuplicateUSDCoins() {
@@ -14,10 +11,8 @@ async function deleteDuplicateUSDCoins() {
 
   try {
     await client.connect();
-
     const database = client.db('test'); // Replace with your database name
     const collection = database.collection('coins'); // Replace with your collection name
-
     // Find all USD Coin documents except one
     const duplicateUSDCoins = await collection.find({ name: "USD Coin" }).toArray();
     const usdCoinIds = duplicateUSDCoins.map(doc => doc._id);
