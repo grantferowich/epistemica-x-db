@@ -8,6 +8,14 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const mongoStr = process.env.DATABASE_URL;
+const compression = require('compression');
+
+app.use(compression({
+    // Specify Brotli as the compression algorithm
+    algorithm: 'brotli',
+    // Optional: Set the compression level (0-11, default: 6)
+    level: 6
+}));
 
 // middleware
 const cors = require('cors');

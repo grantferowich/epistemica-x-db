@@ -24,6 +24,15 @@ Content-Type: application/json
 }
 
 
+### Expect invalid password: Yup
+POST http://localhost:3000/api/user/login
+Content-Type: application/json
+
+{
+    "email":"g.ferowich@gmail.com",
+    "password":"legend-alpha"
+}
+
 ### Bad email: Expect invalid email: Yup
 POST https://epistemica-x-db.vercel.app/api/user/login
 Content-Type: application/json
@@ -134,6 +143,74 @@ Content-Type: application/json
     }
 }
 
+
+###
+POST http://localhost:3000/api/basket/post
+Content-Type: application/json
+
+{
+    "basketNameStr": "2023 Bitcoin",
+    "user_IDStr": "646678e5024aad67cf201bfb",
+    "indexDateStr": "01-01-2023",
+    "initialBasketValueInt": 10000,
+    "presentBasketValueInt": 30000,
+    "percentReturnInt": 200,
+    "asset1HM": {
+        "asset1NameStr": "Bitcoin",
+        "asset1IndexPriceInt": 10000, 
+        "asset1QuantityInt": 1, 
+        "asset1PresentPriceInt": 30000,
+        "asset1InitialPositionValueInt": 10000,
+        "asset1PresentPositionValueInt": 30000,
+        "asset1WeightInt": 100,
+        "asset1APIKeyStr": "bitcoin",
+        "asset1LoSStr": "long"
+    },
+    "asset2HM": {
+        "asset2NameStr": "",
+        "asset2IndexPriceInt": 0, 
+        "asset2QuantityInt": 0,
+        "asset2PresentPriceInt": 0,
+        "asset2InitialPositionValueInt": 0,
+        "asset2PresentPositionValueInt": 0,
+        "asset2WeightInt": 0,
+        "asset2APIKeyStr": "",
+        "asset2LoSStr": "long"
+    },
+    "asset3HM": {
+        "asset3NameStr": "",
+        "asset3IndexPriceInt": 0,
+        "asset3QuantityInt": 0,
+        "asset3PresentPriceInt": 0,
+        "asset3InitialPositionValueInt": 0,
+        "asset3PresentPositionValueInt": 0,
+        "asset3WeightInt": 0,
+        "asset3APIKeyStr": "",
+        "asset3LoSStr": "long"
+    },
+    "asset4HM": {
+        "asset4NameStr": "",
+        "asset4IndexPriceInt": 0,
+        "asset4QuantityInt": 0,
+        "asset4PresentPriceInt": 0,
+        "asset4InitialPositionValueInt": 0,
+        "asset4PresentPositionValueInt": 0,
+        "asset4WeightInt": 0,
+        "asset4APIKeyStr": "",
+        "asset4LoSStr": "long"
+    },
+    "asset5HM": {
+        "asset5NameStr": "",
+        "asset5IndexPriceInt": 0, 
+        "asset5QuantityInt": 0,
+        "asset5PresentPriceInt": 0,
+        "asset5InitialPositionValueInt": 0,
+        "asset5PresentPositionValueInt": 0,
+        "asset5WeightInt": 0,
+        "asset5APIKeyStr": "",
+        "asset5LoSStr": "long"
+    }
+}
 // the coins post request works as of Saturday
 // June 3, 2023 || 2:43pm.
 ### 
@@ -6142,6 +6219,11 @@ Content-Type: application/json
 ###
 POST https://epistemica-x-db-git-main-clariti23.vercel.app/api/time/post
 Content-Type: application/json
+
+###
+GET https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/get250
+Content-Type: application/json
+
 ### 
 POST https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/post
 Content-Type: application/json
