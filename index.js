@@ -8,13 +8,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const mongoStr = process.env.DATABASE_URL;
-const compression = require('compression');
 
-
-app.use(compression({
-    algorithm:'brotli',
-    level: 6
-}))
 // middleware
 const cors = require('cors');
 const options = {
