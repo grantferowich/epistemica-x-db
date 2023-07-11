@@ -9,7 +9,7 @@ const app = express();
 const mongoose = require('mongoose');
 const mongoStr = process.env.DATABASE_URL;
 const compression = require('compression');
-const axios = require('axious');
+const axios = require('axios');
 const cron = require('node-cron');
 const Coin = require('./models/coin');
 
