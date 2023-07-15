@@ -6,7 +6,7 @@ const cors = require('cors');
 const Redis = require('redis');
 
 const redisClient = Redis.createClient()
-const DEFAULT_EXPIRATION_INT = 3600;
+const DEFAULT_EXPIRATION_INT = 3660;
 
 router.use(express.json());
 
@@ -29,6 +29,7 @@ router.post('/post', async (request, response) => {
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
         // post to the Coin endpoint
         await Coin.insertMany(coins)
+        redisClient.setex("250", DEFAULT_EXPIRATION_INT, JSON.stringify(coins))
         .then(() => {
             console.log('Coins were added to the database.');
             response.status(200).send('Coins were added successfully.')
@@ -45,11 +46,22 @@ router.post('/post', async (request, response) => {
 router.get('/get250', async (req, res) => {
  
     try {
-      const coins = await Coin.find()
-        .sort({ createdAt: -1 })
-        .limit(250);
-      redisClient.setex("250", DEFAULT_EXPIRATION_INT, JSON.stringify(coins))
-      res.json(coins);
+      redisClient.get('250', async (error, data) => {
+        if (error) {
+          console.error(error)
+        }
+        if (data !== null){
+          console.log('Cache hit')
+          return res.json(JSON.parse(data))
+        } else {
+          console.log('Cache miss')
+          const coins = await Coin.find()
+          .sort({ createdAt: -1 })
+          .limit(250);
+          redisClient.setex("250", DEFAULT_EXPIRATION_INT, JSON.stringify(coins));
+          res.json(coins);
+        }
+      })
     } catch (error) {
       console.error('Error retrieving coins:', error);
       res.status(500).send('An error occurred.');
