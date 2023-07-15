@@ -1,7 +1,10 @@
 GET http://localhost:3000/users
 
 ###
+GET http://localhost:3000/api/coin/get250
 
+
+###
 GET http://localhost:3000/subscribers/6410913ab07c54a24b028807
 
 ### 

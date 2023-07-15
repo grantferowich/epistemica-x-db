@@ -3,6 +3,10 @@ const router = express.Router();
 const Coin = require('../models/coin');
 const Time = require('../models/time');
 const cors = require('cors');
+const Redis = require('redis');
+
+const redisClient = Redis.createClient()
+const DEFAULT_EXPIRATION_INT = 3600;
 
 router.use(express.json());
 
@@ -39,10 +43,12 @@ router.post('/post', async (request, response) => {
 })
 
 router.get('/get250', async (req, res) => {
+ 
     try {
       const coins = await Coin.find()
         .sort({ createdAt: -1 })
         .limit(250);
+      redisClient.setex("250", DEFAULT_EXPIRATION_INT, JSON.stringify(coins))
       res.json(coins);
     } catch (error) {
       console.error('Error retrieving coins:', error);
