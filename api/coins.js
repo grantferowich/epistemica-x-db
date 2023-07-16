@@ -5,7 +5,9 @@ const Time = require('../models/time');
 const cors = require('cors');
 const Redis = require('redis');
 
-const redisClient = Redis.createClient()
+const redisClient = Redis.createClient({
+  url: 'redis://default:yJZdFUQ2gHP2B2ijJs9MwHyq9ARDc4bl@redis-18696.c99.us-east-1-4.ec2.cloud.redislabs.com:18696'
+})
 const DEFAULT_EXPIRATION_INT = 3660;
 
 router.use(express.json());
