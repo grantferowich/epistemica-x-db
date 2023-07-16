@@ -29,9 +29,9 @@ router.post('/post', async (request, response) => {
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
         // post to the Coin endpoint
         await Coin.insertMany(coins)
-        redisClient.setex("250", DEFAULT_EXPIRATION_INT, JSON.stringify(coins))
         .then(() => {
             console.log('Coins were added to the database.');
+            redisClient.setex("250", DEFAULT_EXPIRATION_INT, JSON.stringify(coins))
             response.status(200).send('Coins were added successfully.')
         }).catch(error => {
             console.error('Error adding coins to the database:', error)
