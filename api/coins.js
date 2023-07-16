@@ -4,14 +4,11 @@ const Coin = require('../models/coin');
 const Time = require('../models/time');
 const cors = require('cors');
 const Redis = require('redis');
-
 const redisClient = Redis.createClient({
   url: 'redis://default:yJZdFUQ2gHP2B2ijJs9MwHyq9ARDc4bl@redis-18696.c99.us-east-1-4.ec2.cloud.redislabs.com:18696'
 })
 const DEFAULT_EXPIRATION_INT = 3660;
-
 router.use(express.json());
-
 router.get('/getAll', cors(), async (request, response) => {
     try {
         const coinsArr = await Coin.find();
@@ -21,8 +18,6 @@ router.get('/getAll', cors(), async (request, response) => {
         response.status(500).json({error: 'Internal server error.'})
     }
 })
-
-
 router.post('/post', async (request, response) => {
     try {
         // isolate 250 coins from api call
@@ -44,9 +39,7 @@ router.post('/post', async (request, response) => {
         response.status(400).json(console.log('Error!', errorHM));
     }  
 })
-
 router.get('/get250', async (req, res) => {
- 
     try {
       redisClient.get('250', async (error, data) => {
         if (error) {
@@ -69,7 +62,6 @@ router.get('/get250', async (req, res) => {
       res.status(500).send('An error occurred.');
     }
 });
-
 router.delete('/delete-all', async (request, response) => {
   try {
     await Coin.deleteMany();
@@ -79,5 +71,4 @@ router.delete('/delete-all', async (request, response) => {
     response.status(500).send('An error occured with the /delete-all request.')
   }
 })
-
 module.exports = router;
