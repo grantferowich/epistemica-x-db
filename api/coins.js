@@ -46,10 +46,10 @@ router.get('/get250', async (req, res) => {
           console.error(error)
         }
         if (data !== null){
-          console.log('Cache hit')
-          return res.json(JSON.parse(data))
+          console.log('Cache hit');
+          return res.json(JSON.parse(data));
         } else {
-          console.log('Cache miss')
+          console.log('Cache miss');
           const coins = await Coin.find()
           .sort({ createdAt: -1 })
           .limit(250);
@@ -65,10 +65,10 @@ router.get('/get250', async (req, res) => {
 router.delete('/delete-all', async (request, response) => {
   try {
     await Coin.deleteMany();
-    response.json({message: 'All coins have been deleted.'})
+    response.json({message: 'All coins have been deleted.'});
   } catch (error) {
     console.error('Error deleting the coins:', error);
-    response.status(500).send('An error occured with the /delete-all request.')
+    response.status(500).send('An error occured with the /delete-all request.');
   }
 })
 module.exports = router;

@@ -8,7 +8,6 @@ GET http://localhost:3000/api/coin/get250
 GET http://localhost:3000/subscribers/6410913ab07c54a24b028807
 
 ### 
-
 POST http://localhost:3000/subscribers
 Content-Type: application/json
 
@@ -67,7 +66,6 @@ Content-Type: application/json
 
 ###
 DELETE https://epistemica-x-db.vercel.app/api/coin/delete-all
-
 
 ### Bad password: Expect "Invalid email."
 POST https://epistemica-x-db.vercel.app/api/user/post
@@ -146,7 +144,6 @@ Content-Type: application/json
     }
 }
 
-
 ###
 POST http://localhost:3000/api/basket/post
 Content-Type: application/json
@@ -214,6 +211,7 @@ Content-Type: application/json
         "asset5LoSStr": "long"
     }
 }
+
 // the coins post request works as of Saturday
 // June 3, 2023 || 2:43pm.
 ### 
@@ -13687,5 +13685,6 @@ Content-Type: application/json
         "price_change_percentage_24h_in_currency": 2.104276620949385
     }
 ]
+
 ###
 DELETE https://epistemica-x-db.vercel.app/api/basket/delete/647d3728d6b119a90e5e9a9d
