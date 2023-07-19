@@ -35,7 +35,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 // initialize db object
 const db = mongoose.connection;
 db.on('error', (error) => {
-    console.log('mongoStr', process.env)
+    // console.log('mongoStr', process.env)
     console.log(error)
 });
 db.once('open', () => console.log('Connected to Mongoose Database'));

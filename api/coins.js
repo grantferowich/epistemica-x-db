@@ -8,6 +8,10 @@ const Redis = require('ioredis');
 //   url: process.env.REDIS_URI
 // })
 const redisClient = new Redis(process.env.REDIS_URI)
+// const redisPort = redisClient.options.port;
+
+// Log the Redis port
+// console.log('Redis Port:', redisPort);
 const DEFAULT_EXPIRATION_INT = 3660;
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
