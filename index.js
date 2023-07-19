@@ -31,7 +31,7 @@ const options = {
     bufferMaxEntries: 0
 }
 mongoose.set('strictQuery', false);
-mongoose.connect(mongoStr, { useNewUrlParser: true}, {useMongoClient: true})
+mongoose.connect(mongoStr, { useNewUrlParser: true, useUnifiedTopology: true}, {useMongoClient: true})
 // initialize db object
 const db = mongoose.connection;
 db.on('error', (error) => console.log(error));
