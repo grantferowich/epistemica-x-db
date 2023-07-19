@@ -5,7 +5,7 @@ const Time = require('../models/time');
 const cors = require('cors');
 const Redis = require('redis');
 const redisClient = Redis.createClient({
-  url: process.env.REDIS_URL
+  url: process.env.REDIS_URI
 })
 const DEFAULT_EXPIRATION_INT = 3660;
 router.use(express.json());
@@ -31,6 +31,7 @@ router.post('/post', async (request, response) => {
             redisClient.setex("250", DEFAULT_EXPIRATION_INT, JSON.stringify(coins))
             response.status(200).send('Coins were added successfully.')
         }).catch(error => {
+
             console.error('Error adding coins to the database:', error)
             response.status(500).send('An error occurred.')
         })
@@ -43,7 +44,8 @@ router.get('/get250', async (req, res) => {
     try {
       redisClient.get('250', async (error, data) => {
         if (error) {
-          console.log('process.env', process.env)
+          console.log('console logging....')
+          console.log('process.env', process.env.REDIS_URI)
           console.error(error)
         }
         if (data !== null){
