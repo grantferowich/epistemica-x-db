@@ -34,7 +34,10 @@ mongoose.set('strictQuery', false);
 mongoose.connect(mongoStr, { useNewUrlParser: true, useUnifiedTopology: true}, {useMongoClient: true})
 // initialize db object
 const db = mongoose.connection;
-db.on('error', (error) => console.log(error));
+db.on('error', (error) => {
+    console.log('mongoStr', mongoStr)
+    console.log(error)
+});
 db.once('open', () => console.log('Connected to Mongoose Database'));
 
 const coinGeckoAPIStr = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=24h'
