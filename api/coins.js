@@ -43,6 +43,7 @@ router.get('/get250', async (req, res) => {
     try {
       redisClient.get('250', async (error, data) => {
         if (error) {
+          console.log('process.env', process.env)
           console.error(error)
         }
         if (data !== null){
