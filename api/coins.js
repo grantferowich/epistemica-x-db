@@ -3,10 +3,11 @@ const router = express.Router();
 const Coin = require('../models/coin');
 const Time = require('../models/time');
 const cors = require('cors');
-const Redis = require('redis');
-const redisClient = Redis.createClient({
-  url: process.env.REDIS_URI
-})
+const Redis = require('ioredis');
+// const redisClient = Redis.createClient({
+//   url: process.env.REDIS_URI
+// })
+const redisClient = new Redis(process.env.REDIS_URI)
 const DEFAULT_EXPIRATION_INT = 3660;
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
