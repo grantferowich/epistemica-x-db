@@ -7,7 +7,6 @@ const Redis = require('redis');
 const redisClient = Redis.createClient({
   url: process.env.REDIS_URL
 })
-console.log()
 const DEFAULT_EXPIRATION_INT = 3660;
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
