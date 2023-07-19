@@ -31,11 +31,11 @@ const options = {
     bufferMaxEntries: 0
 }
 mongoose.set('strictQuery', false);
-mongoose.connect(mongoStr, { useNewUrlParser: true, useUnifiedTopology: true}, {useMongoClient: true})
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true}, {useMongoClient: true})
 // initialize db object
 const db = mongoose.connection;
 db.on('error', (error) => {
-    console.log('mongoStr', mongoStr)
+    console.log('mongoStr', process.env.DATABASE_URL)
     console.log(error)
 });
 db.once('open', () => console.log('Connected to Mongoose Database'));
