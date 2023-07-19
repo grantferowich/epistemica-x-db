@@ -35,7 +35,7 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTo
 // initialize db object
 const db = mongoose.connection;
 db.on('error', (error) => {
-    console.log('mongoStr', process.env.DATABASE_URL)
+    console.log('mongoStr', process.env)
     console.log(error)
 });
 db.once('open', () => console.log('Connected to Mongoose Database'));
