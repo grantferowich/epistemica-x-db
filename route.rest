@@ -16,6 +16,16 @@ Content-Type: application/json
     "subscribedToChannel": "Web Dev Simplified"
 }
 
+### expect success or w/e
+POST https://epistemica-x-db.vercel.app/api/user/login
+Content-Type: application/json
+
+{
+    "email":"g.ferowich@gmail.com",
+    "password":"legend-alpha"
+}
+
+
 ### Expect invalid password: Yup
 POST https://epistemica-x-db.vercel.app/api/user/login
 Content-Type: application/json

@@ -43,7 +43,7 @@ router.post('/post', async (request, response) => {
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){
-        return response.status.json({ message: 'Invalid email.'});
+        return response.status(401).json({ message: 'Invalid email.'});
     }
     
     // wrap the data to be posted in a try-catch block 

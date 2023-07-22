@@ -36,7 +36,6 @@ router.post('/post', async (request, response) => {
             redisClient.setex("250", DEFAULT_EXPIRATION_INT, JSON.stringify(coins))
             response.status(200).send('Coins were added successfully.')
         }).catch(error => {
-
             console.error('Error adding coins to the database:', error)
             response.status(500).send('An error occurred.')
         })
