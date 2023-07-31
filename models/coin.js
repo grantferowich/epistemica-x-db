@@ -79,7 +79,7 @@ const coinSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    required: true
+    required: false
   },
   price_change_24h: {
     type: Number,

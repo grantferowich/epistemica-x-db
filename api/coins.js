@@ -12,7 +12,7 @@ const redisClient = new Redis(process.env.REDIS_URI)
 
 // Log the Redis port
 // console.log('Redis Port:', redisPort);
-const DEFAULT_EXPIRATION_INT = 3660;
+
 router.use(express.json());
 router.get('/getAll', cors(), async (request, response) => {
     try {
@@ -33,7 +33,7 @@ router.post('/post', async (request, response) => {
         await Coin.insertMany(coins)
         .then(() => {
             console.log('Coins were added to the database.');
-            redisClient.setex("250", DEFAULT_EXPIRATION_INT, JSON.stringify(coins))
+            redisClient.set("250", JSON.stringify(coins))
             response.status(200).send('Coins were added successfully.')
         }).catch(error => {
             console.error('Error adding coins to the database:', error)
@@ -60,7 +60,7 @@ router.get('/get250', async (req, res) => {
           const coins = await Coin.find()
           .sort({ createdAt: -1 })
           .limit(250);
-          redisClient.setex("250", DEFAULT_EXPIRATION_INT, JSON.stringify(coins));
+          redisClient.set("250", JSON.stringify(coins));
           res.json(coins);
         }
       })
