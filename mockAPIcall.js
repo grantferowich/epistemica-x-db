@@ -7,7 +7,6 @@ const completeAPICall = async () => {
     console.log('Response HM', responseHM);
     try {
         const apiDataArr = (responseHM.data.sort((a, b) => a.market_cap_rank - b.market_cap_rank));
-        await Coin.deleteMany();
         await Coin.insertMany(apiDataArr);
         console.log('API call was successfull.')
     } catch (errorHM) {

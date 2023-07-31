@@ -97,7 +97,7 @@ const coinSchema = new mongoose.Schema({
       },
       currency: {
         type: String,
-        default: 'btc',
+        default: '',
         required: false
       },
       percentage: {
