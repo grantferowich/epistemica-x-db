@@ -27,13 +27,14 @@ router.post('/post', async (request, response) => {
     try {
         // isolate 250 coins from api call
         const coins = request.body;
+        redisClient.set("250", JSON.stringify(coins))
+        console.log("Coins were added to the Redis cache.")
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
         // post to the Coin endpoint
         await Coin.insertMany(coins)
         .then(() => {
             console.log('Coins were added to the database.');
-            redisClient.set("250", JSON.stringify(coins))
             response.status(200).send('Coins were added successfully.')
         }).catch(error => {
             console.error('Error adding coins to the database:', error)
@@ -61,6 +62,7 @@ router.get('/get250', async (req, res) => {
           .sort({ createdAt: -1 })
           .limit(250);
           redisClient.set("250", JSON.stringify(coins));
+          console.log("Coins were added to the Redis cache.")
           res.json(coins);
         }
       })

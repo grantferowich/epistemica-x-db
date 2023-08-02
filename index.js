@@ -46,7 +46,6 @@ const completeAPICall = async () => {
     try {
         const apiDataArr = (responseHM.data.sort((a, b) => a.market_cap_rank - b.market_cap_rank));
         await Coin.insertMany(apiDataArr);
-        await Time.
         redisClient.set("250", JSON.stringify(apiDataArr))
         console.log('Redis cache was updated.')
         console.log('API call was successfull.')
@@ -56,7 +55,6 @@ const completeAPICall = async () => {
 }
 // schedule the api call to run every hour
 cron.schedule('0 * * * *', async () => {
-    await axios.delete('https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/delete-all')
     completeAPICall();
 })
 
