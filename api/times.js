@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Time = require('../models/time')
-
-
 router.get('/get', (request, response) => {
     Time.findOne({}, {}, {sort: { lastUpdateDate: 1 }})
     .then(time => {

@@ -12,7 +12,8 @@ const compression = require('compression');
 const axios = require('axios');
 const cron = require('node-cron');
 const Coin = require('./models/coin');
-
+const Redis = require('ioredis');
+const redisClient = new Redis(process.env.REDIS_URI)
 // compression 
 app.use(compression({
     // Specify Brotli as the compression algorithm
@@ -45,15 +46,21 @@ const completeAPICall = async () => {
     try {
         const apiDataArr = (responseHM.data.sort((a, b) => a.market_cap_rank - b.market_cap_rank));
         await Coin.insertMany(apiDataArr);
+        await Time.
+        redisClient.set("250", JSON.stringify(apiDataArr))
+        console.log('Redis cache was updated.')
         console.log('API call was successfull.')
     } catch (errorHM) {
         console.error('API call failed: ',errorHM )
     }
 }
 // schedule the api call to run every hour
-cron.schedule('0 * * * *', () => {
+cron.schedule('0 * * * *', async () => {
+    await axios.delete('https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/delete-all')
     completeAPICall();
 })
+
+
 // app.use(express.json());
 app.use(express.json({ limit: '10mb'}));
 app.use((requestHM, responseHM, next) =>{
