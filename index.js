@@ -55,10 +55,9 @@ const completeAPICall = async () => {
 }
 // schedule the api call to run every hour
 cron.schedule('0 * * * *', async () => {
+    console.log('Cron task running.')
     completeAPICall();
 })
-
-
 // app.use(express.json());
 app.use(express.json({ limit: '10mb'}));
 app.use((requestHM, responseHM, next) =>{
