@@ -54,7 +54,7 @@ const completeAPICall = async () => {
         console.error('API call failed: ',errorHM )
     }
 }
-const writeToFile(){
+const writeToFile = () => {
     const currentTime = new Date.toLocaleString();
     const logMessageStr =  `Cron task ran at ${currentTime}\n`;
     fs.appendFile('cron.md', logMessageStr, (err) => {
