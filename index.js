@@ -13,7 +13,8 @@ const axios = require('axios');
 const cron = require('node-cron');
 const Coin = require('./models/coin');
 const Redis = require('ioredis');
-const redisClient = new Redis(process.env.REDIS_URI)
+const redisClient = new Redis(process.env.REDIS_URI);
+const fs = require('fs');
 // compression 
 app.use(compression({
     // Specify Brotli as the compression algorithm
@@ -53,9 +54,23 @@ const completeAPICall = async () => {
         console.error('API call failed: ',errorHM )
     }
 }
+const writeToFile(){
+    const currentTime = new Date.toLocaleString();
+    const logMessageStr =  `Cron task ran at ${currentTime}\n`;
+    fs.appendFile('cron.md', logMessageStr, (err) => {
+        if (err) {
+            console.error('Erro writing to file:', err)
+        } else {
+            console.log('wrote to the file.')
+        }
+    })
+}
+
 // schedule the api call to run every hour
 cron.schedule('0 * * * *', async () => {
+
     console.log('Cron task running.')
+    writeToFile()
     completeAPICall();
 })
 // app.use(express.json());
