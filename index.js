@@ -55,23 +55,25 @@ const completeAPICall = async () => {
     }
 }
 const writeToFile = () => {
-    const currentTime = new Date.toLocaleString();
-    const logMessageStr =  `Cron task ran at ${currentTime}\n`;
+    let currentTime = new Date();
+    const currentDate = currentTime.toLocaleDateString();
+    const hoursInt = currentTime.getHours();
+    const minutesInt = currentTime.getMinutes();
+    const secondsInt = currentTime.getSeconds();
+    const millisecondsInt = currentTime.getMilliseconds();
+    const logMessageStr =  `\nCron task ran at ${currentDate}:${hoursInt}:${minutesInt}:${secondsInt}:${millisecondsInt}.`;
     fs.appendFile('cron.md', logMessageStr, (err) => {
         if (err) {
-            console.error('Erro writing to file:', err)
+            console.error('Error writing to file:', err);
         } else {
-            console.log('wrote to the file.')
+            console.log('wrote to the file.');
         }
     })
 }
-
 // schedule the api call to run every hour
 cron.schedule('0 * * * *', async () => {
-
-    console.log('Cron task running.')
-    writeToFile()
     completeAPICall();
+    writeToFile();
 })
 // app.use(express.json());
 app.use(express.json({ limit: '10mb'}));
