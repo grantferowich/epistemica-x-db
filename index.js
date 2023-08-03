@@ -62,7 +62,7 @@ const writeToFile = () => {
     const secondsInt = currentTime.getSeconds();
     const millisecondsInt = currentTime.getMilliseconds();
     const logMessageStr =  `\nCron task ran at ${currentDate}:${hoursInt}:${minutesInt}:${secondsInt}:${millisecondsInt}.`;
-    fs.appendFile('cron.md', logMessageStr, (err) => {
+    fs.appendFile('logs/cron.md', logMessageStr, (err) => {
         if (err) {
             console.error('Error writing to file:', err);
         } else {
