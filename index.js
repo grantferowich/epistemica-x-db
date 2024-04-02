@@ -1,6 +1,3 @@
-// if (process.env.NODE_ENV !== 'production' ) {
-//     require('dotenv').config();
-// }
 require('dotenv').config();
 // constants
 const User = require('./models/user.js');
@@ -77,8 +74,15 @@ const writeToFile = () => {
 }
 // schedule the api call to run every hour
 cron.schedule('0 * * * *', async () => {
-    completeAPICall();
-    writeToFile();
+    try {
+        console.log("Cron job executed.")
+        completeAPICall();
+        writeToFile();
+    } catch (error){
+        console.log("Error in the cron job.")
+        console.error("Error in cron job:", error)
+    }
+    
 })
 // app.use(express.json());
 app.use(express.json({ limit: '10mb'}));
@@ -98,11 +102,16 @@ app.use('/api/user', usersRouter);
 app.use('/api/basket', basketsRouter);
 app.use('/api/coin', coinsRouter);
 app.use('/api/time', timesRouter);
+// app.use('/api/hello')
 // ensure the page can render what is located in the views dir
 app.set("view engine", "ejs");
 // make sure the view is rendered
 app.get("/", (req, res) => {
-    res.render("index");
+    try {
+        res.render("index");
+    } catch(error){
+        console.log("Error rendering index", error)
+    }
 })
 app.listen(3000, () => console.log('Server Started on port 3000.'));
 module.exports = app;
