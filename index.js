@@ -48,14 +48,16 @@ const completeAPICall = async () => {
     const responseHM = await axios.get(coinGeckoAPIStr);
     try {
         const apiDataArr = (responseHM.data.sort((a, b) => a.market_cap_rank - b.market_cap_rank));
-        await Coin.insertMany(apiDataArr);
         redisClient.set("250", JSON.stringify(apiDataArr))
+        redisClient.expire("250", 3600)
+        await Coin.insertMany(apiDataArr);
         console.log('Redis cache was updated.')
         console.log('API call was successfull.')
     } catch (errorHM) {
-        console.error('API call failed: ',errorHM )
+        console.error('API call failed: ', errorHM)
     }
 }
+
 const writeToFile = () => {
     let currentTime = new Date();
     const currentDate = currentTime.toLocaleDateString();

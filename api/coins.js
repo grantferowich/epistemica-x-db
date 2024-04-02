@@ -28,6 +28,7 @@ router.post('/post', async (request, response) => {
         // isolate 250 coins from api call
         const coins = request.body;
         redisClient.set("250", JSON.stringify(coins)).then(console.log("cache hit! set key 250."))
+        redisClient.expire("250", 3600)
         console.log("Coins were added to the Redis cache.")
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
@@ -62,6 +63,7 @@ router.get('/get250', async (req, res) => {
           .sort({ createdAt: -1 })
           .limit(250);
           redisClient.set("250", JSON.stringify(coins));
+          redisClient.expire("250", 3600)
           console.log("Coins were added to the Redis cache.")
           res.json(coins);
         }
