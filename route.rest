@@ -12231,6 +12231,9 @@ Content-Type: application/json
 GET https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/get250
 Content-Type: application/json
 
+###
+GET https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/getAll
+Content-Type: application/json
 ### 
 POST https://epistemica-x-db-git-main-clariti23.vercel.app/api/coin/post
 Content-Type: application/json
