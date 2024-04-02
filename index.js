@@ -15,6 +15,11 @@ const Coin = require('./models/coin');
 const Redis = require('ioredis');
 const redisClient = new Redis(process.env.REDIS_URI);
 const fs = require('fs');
+
+redisClient.on("connect", () => {
+    console.log("Connected to Redis Cache.")
+})
+
 // compression 
 app.use(compression({
     // Specify Brotli as the compression algorithm
@@ -40,7 +45,7 @@ db.on('error', (error) => {
     // console.log('mongoStr', process.env)
     console.log(error)
 });
-db.once('open', () => console.log('Connected to Mongoose Database'));
+db.once('open', () => console.log('Connected to Mongoose Database.'));
 const coinGeckoAPIStr = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=24h'
 const completeAPICall = async () => {
     const responseHM = await axios.get(coinGeckoAPIStr);
@@ -98,5 +103,5 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
     res.render("index");
 })
-app.listen(3000, () => console.log('Server Started'));
+app.listen(3000, () => console.log('Server Started on port 3000'));
 module.exports = app;

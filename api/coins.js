@@ -19,7 +19,7 @@ router.get('/getAll', cors(), async (request, response) => {
         const coinsArr = await Coin.find();
         response.status(200).json(coinsArr);
     } catch (errorHM) {
-        console.error('Error! See the api/coins.js file. Error message: ',errorHM)
+        console.error('Error! See the api/coins.js file. Error message: ', errorHM)
         response.status(500).json({error: 'Internal server error.'})
     }
 })
@@ -27,7 +27,7 @@ router.post('/post', async (request, response) => {
     try {
         // isolate 250 coins from api call
         const coins = request.body;
-        redisClient.set("250", JSON.stringify(coins))
+        redisClient.set("250", JSON.stringify(coins)).then(console.log("cache hit! set key 250."))
         console.log("Coins were added to the Redis cache.")
         // post to the Time endpoint 
         await Time.findOneAndUpdate({}, { lastUpdated: Date.now()}, { upsert: true});
