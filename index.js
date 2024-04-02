@@ -88,6 +88,7 @@ app.use((requestHM, responseHM, next) =>{
     responseHM.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Type, X-Requested-With');
     next();
 });
+
 const usersRouter = require('./api/users.js');
 const basketsRouter = require('./api/baskets.js');
 const coinsRouter = require('./api/coins.js');
@@ -103,5 +104,5 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
     res.render("index");
 })
-app.listen(3000, () => console.log('Server Started on port 3000'));
+app.listen(3000, () => console.log('Server Started on port 3000.'));
 module.exports = app;
